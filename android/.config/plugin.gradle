@@ -1,0 +1,41 @@
+ext {
+    androids = [
+            compileSdkVersion             : 30,
+            targetSdkVersion              : 30,
+            buildToolsVersion             : "30.0.3",
+    ]
+
+    libs = [
+            appcompact              : '1.2.0',
+            design                  : '1.3.0',
+            constraint              : '2.0.4',
+            fastjson                : '1.1.72.android',
+            recyclerviewadapter     : '3.0.6',
+            eventbus                : '3.2.0',
+            umeng_common            : '9.1.6',
+            umeng_asms              : '1.1.3',
+            umeng_crash             : '0.0.5',
+            umeng_lenovo            : '1.0.0',
+            umeng_mi                : '1.0.0',
+            umeng_oppo              : '1.0.4',
+            umeng_vivo              : '1.0.0.1',
+            multidex                : '2.0.1',
+            videoplayer             : '7.4.2',
+            tablayout               : '2.1.2',
+            circularprogressbar     : '3.0.3',
+            autofittextview         : '0.2.1',
+            swipelayout             : '1.1.0',
+            //自我维护的框架
+            ft_httpcenter           : '1.1.0',
+            ft_webview              : '1.0.7',
+            lib_utils               : '1.2.0',
+            lib_lifecycle           : '1.0.1',
+            lib_image               : '1.1.5',
+            timer                   : '1.0.1',
+            peractivity             : '1.0.4',
+            autoviewpager           : '1.0.8',
+            circularprogressview    : '2.5.2',
+            largeimageview          : '1.0.3',
+
+    ]
+}
