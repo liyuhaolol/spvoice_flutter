@@ -22,7 +22,6 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
@@ -34,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.spvoice_flutter"
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion androids.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -53,8 +52,8 @@ flutter {
 }
 
 dependencies {
+    implementation "androidx.appcompat:appcompat:${libs.appcompact}"
     implementation "com.google.android.material:material:${libs.design}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //通用的工具类
     implementation "com.github.liyuhaolol:CommonUtils:${libs.lib_utils}"
 }

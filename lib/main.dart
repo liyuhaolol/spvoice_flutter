@@ -48,31 +48,31 @@ class _PageState extends State<Page> {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
+    return /*AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        /*statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,*/
+        *//*statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,*//*
         systemNavigationBarColor: (_androidVersion < 30 && _androidVersion != 0)?Colors.white:Colors.transparent.withOpacity(0.002),
         systemNavigationBarDividerColor:Colors.transparent,
         systemNavigationBarIconBrightness: (_androidVersion < 30 && _androidVersion != 0)?Brightness.dark:Brightness.light,
       ),
-      child: Stack(
-        children: [
-          Container(
-            color: Colors.blueGrey,
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).padding.top, 0, 0),
-            child: Container(
-              color: Colors.amber,
-              child: SizedBox(
-                height: MediaQuery.of(context).padding.bottom,
-                width: double.infinity,
-              ),
+      child: ,
+    )*/Stack(
+      children: [
+        Container(
+          color: Colors.blueGrey,
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).padding.top, 0, 0),
+          child: Container(
+            color: Colors.amber,
+            child: SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
+              width: double.infinity,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
