@@ -1,6 +1,4 @@
-import 'dart:io';
 
-import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -23,14 +21,13 @@ class Page extends StatefulWidget {
 }
 
 class _PageState extends State<Page> {
-  int _androidVersion = 0;
   @override
   Future<void> initState() {
     super.initState();
-    initPlatformState();
+    //initPlatformState();
   }
 
-  Future<void> initPlatformState() async {
+/*  Future<void> initPlatformState() async {
     int _sdkLevel = 0;
     try {
       if (Platform.isAndroid) {
@@ -44,37 +41,43 @@ class _PageState extends State<Page> {
     setState(() {
       _androidVersion = _sdkLevel;
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
-    return /*AnnotatedRegion<SystemUiOverlayStyle>(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        *//*statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,*//*
-        systemNavigationBarColor: (_androidVersion < 30 && _androidVersion != 0)?Colors.white:Colors.transparent.withOpacity(0.002),
-        systemNavigationBarDividerColor:Colors.transparent,
-        systemNavigationBarIconBrightness: (_androidVersion < 30 && _androidVersion != 0)?Brightness.dark:Brightness.light,
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarDividerColor:Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark
       ),
-      child: ,
-    )*/Stack(
-      children: [
-        Container(
-          color: Colors.blueGrey,
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).padding.top, 0, 0),
-          child: Container(
-            color: Colors.amber,
-            child: SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
-              width: double.infinity,
+      child: Stack(
+        children: [
+          Container(
+            color: Colors.blueGrey,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).padding.top, 0, 0),
+            child: Container(
+              color: Colors.amber,
+              child: SizedBox(
+                height: getBottomSafeareaHeight(context),
+                width: double.infinity,
+              ),
             ),
           ),
-        ),
-      ],
+          //SafeArea(child: Container(color: Colors.blue,))
+        ],
+      ),
     );
   }
+}
+
+double getBottomSafeareaHeight(BuildContext context){
+  double height = MediaQuery.of(context).viewInsets.bottom;
+  return height == 0?MediaQuery.of(context).padding.bottom:height;
 }
 
 
