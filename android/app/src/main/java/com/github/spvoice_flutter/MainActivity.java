@@ -4,35 +4,34 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.android.FlutterView;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FlutterActivity {
 
-    FlutterView fv;
-    FlutterEngine flutterEngine;
+/*    FlutterView fv;
+    FlutterEngine flutterEngine;*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
         TranslucentUtils.setTranslucentBoth(getWindow());
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            getWindow().setDecorFitsSystemWindows(false);
-        }*/
-        fv = findViewById(R.id.fv);
+        getWindow().setDecorFitsSystemWindows(false);
+/*        fv = findViewById(R.id.fv);
         flutterEngine = new FlutterEngine(this);
         flutterEngine.getDartExecutor().executeDartEntrypoint(
                 DartExecutor.DartEntrypoint.createDefault()
         );
         //flutterEngine.getNavigationChannel().setInitialRoute("/");
-        fv.attachToFlutterEngine(flutterEngine);
+        fv.attachToFlutterEngine(flutterEngine);*/
     }
 
-    @Override
+/*    @Override
     protected void onResume() {
         super.onResume();
         flutterEngine.getLifecycleChannel().appIsResumed();
@@ -48,5 +47,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         flutterEngine.getLifecycleChannel().appIsPaused();
-    }
+    }*/
 }
