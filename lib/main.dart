@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:spvoice_flutter/page/splash.dart';
+import 'package:spvoice_flutter/routers/routers.dart';
 
 void main() {
   runApp(App());
@@ -10,7 +10,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:PageSplash(),
+      initialRoute: MyRouters.PAGE_SPLASH,
+      onGenerateRoute: MyRouters.onGenerateRoute,
     );
   }
 }
