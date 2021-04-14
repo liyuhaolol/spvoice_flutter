@@ -46,7 +46,15 @@ class _SkipState extends State<Skip> {
     super.initState();
     WidgetsBinding.instance
         .addPostFrameCallback((timeStamp) {
-          startCountdownTimer();//启动计时器
+          //给100毫秒延迟，让UI反应一下，避免感觉第一秒很短
+          Future.delayed(
+            Duration(
+                milliseconds: 100),
+                  (){
+              startCountdownTimer();//启动计时器
+            }
+          );
+          //startCountdownTimer();//启动计时器
     });
   }
 
@@ -106,7 +114,7 @@ class _SkipState extends State<Skip> {
 }
 
 void goPageIndex(BuildContext context){
-  //Navigator.pushNamedAndRemoveUntil(context, MyRouters.PAGE_INDEX, (route) => false);
+  Navigator.pushNamedAndRemoveUntil(context, MyRouters.PAGE_INDEX, (route) => false);
 }
 
 
