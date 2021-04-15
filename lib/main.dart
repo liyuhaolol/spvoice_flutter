@@ -14,9 +14,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-      ),
       initialRoute: MyRouters.PAGE_SPLASH,
       onGenerateRoute: MyRouters.onGenerateRoute,
     );

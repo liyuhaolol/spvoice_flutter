@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:spvoice_flutter/res/ColorList.dart';
-import 'package:spvoice_flutter/res/StringList.dart';
+import 'package:spvoice_flutter/res/colorlist.dart';
+import 'package:spvoice_flutter/res/stringlist.dart';
 import 'package:spvoice_flutter/routers/routers.dart';
 import 'package:spvoice_flutter/view/launchbackground.dart';
 

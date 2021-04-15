@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:spvoice_flutter/res/ColorList.dart';
+import 'package:spvoice_flutter/res/colorlist.dart';
 
 Widget LaunchBackground(){
   return Stack(
