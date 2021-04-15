@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:spvoice_flutter/routers/routers.dart';
 
 void main() {
+  /*SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarBrightness: Brightness.dark,
+  ));*/
   runApp(App());
 }
 
@@ -11,6 +14,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark,
+      ),
       initialRoute: MyRouters.PAGE_SPLASH,
       onGenerateRoute: MyRouters.onGenerateRoute,
     );
