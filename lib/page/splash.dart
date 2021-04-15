@@ -115,7 +115,7 @@ class _SkipState extends State<Skip> {
 }
 
 void goPageIndex(BuildContext context){
-  //Navigator.pushNamedAndRemoveUntil(context, MyRouters.PAGE_INDEX, (route) => false);
+  Navigator.pushNamedAndRemoveUntil(context, MyRouters.PAGE_INDEX, (route) => false);
 }
 
 
