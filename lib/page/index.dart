@@ -7,8 +7,9 @@ class PageIndex extends StatelessWidget {
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.dark,
-          systemNavigationBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,//iOS
+          statusBarIconBrightness: Brightness.dark,//Android
+          systemNavigationBarIconBrightness: Brightness.dark,//Android
         ),
         child: Container(),
       ),

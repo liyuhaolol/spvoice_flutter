@@ -16,8 +16,9 @@ class PageSplash extends StatelessWidget {
             /*statusBarColor: Colors.white,
             systemNavigationBarColor: Colors.white,
             systemNavigationBarDividerColor:Colors.white,*/
-            statusBarIconBrightness: Brightness.light,
-            systemNavigationBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.dark,//iOS
+            statusBarIconBrightness: Brightness.light,//Android
+            systemNavigationBarIconBrightness: Brightness.light,//Android
         ),
         child: Stack(
           children: [
@@ -114,7 +115,7 @@ class _SkipState extends State<Skip> {
 }
 
 void goPageIndex(BuildContext context){
-  Navigator.pushNamedAndRemoveUntil(context, MyRouters.PAGE_INDEX, (route) => false);
+  //Navigator.pushNamedAndRemoveUntil(context, MyRouters.PAGE_INDEX, (route) => false);
 }
 
 
