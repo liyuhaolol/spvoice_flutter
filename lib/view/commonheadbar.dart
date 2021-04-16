@@ -2,17 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
 
 class CommonHead extends StatelessWidget {
+  String _title;
+  Color _lineColor;
+
+  CommonHead(this._title,{bool hasLine = false}){
+    if(hasLine){
+      _lineColor = gray_ed;
+    }else{
+      _lineColor = Colors.white;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Container(
-        height: 44,
+        height: 45,
         child: Stack(
           children: [
             Center(
               child: Text(
-                '设置',
+                _title,
                 style: TextStyle(fontSize: 18,color: gray_5),),
             ),
             GestureDetector(
@@ -26,6 +37,16 @@ class CommonHead extends StatelessWidget {
                 padding: EdgeInsets.only(left: 16),
                 alignment: Alignment.centerLeft,
                 child: Image.asset('images/icon_leftbtn.png',width: 11,height: 22,),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                width: double.infinity,
+                height: 1,
+                color: _lineColor,
               ),
             ),
           ],

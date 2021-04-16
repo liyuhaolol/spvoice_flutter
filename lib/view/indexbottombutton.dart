@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/page/index/setting.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
@@ -42,11 +43,13 @@ class MainBottom extends StatelessWidget {
     var temp = indexData.map((e) => Expanded(//视频
         child: GestureDetector(
           onTap: (){
-            arguments: {
-              'title':'搜索页面',
-            'content':'搜索页面内容区域'
-            }
-            Navigator.pushNamed(context, e['router'],arguments: e['name']);
+            Navigator.pushNamed(
+                context,
+                e['router'],
+                arguments: {
+                  'title':e['name'],
+                }
+                );
           },
           child: Container(
             color: Colors.white,

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:spvoice_flutter/anim/pagerouteranim.dart';
 import 'package:spvoice_flutter/page/index.dart';
 import 'package:spvoice_flutter/page/index/setting.dart';
 import 'package:spvoice_flutter/page/splash.dart';
@@ -12,6 +13,7 @@ class MyRouters{
 
   static final routes = {
     PAGE_SPLASH:(context)=>PageSplash(),
+    PAGE_INDEX:(context)=>PageIndex(),
     PAGE_INDEX:(context)=>PageIndex(),
     PAGE_SETTING:(context,{arguments})=>PageSetting(arguments:arguments),
     //PAGE_INDEX:(context,{arguments})=>SearchPage(arguments:arguments),

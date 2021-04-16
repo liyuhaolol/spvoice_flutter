@@ -7,3 +7,5 @@ final Color skip_text = Color(0xFFFFFFFF);
 final Color gray_a7 = Color(0xFFa7a7a7);
 final Color gray_ea = Color(0xFFeaeaea);
 final Color gray_5 = Color(0xFF555555);
+final Color gray_ed = Color(0xFFEDEDED);
+final Color gray_f4 = Color(0xFFf4f4f4);
