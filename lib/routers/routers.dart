@@ -1,16 +1,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/page/index.dart';
+import 'package:spvoice_flutter/page/index/setting.dart';
 import 'package:spvoice_flutter/page/splash.dart';
 
 class MyRouters{
   static final String PAGE_SPLASH = '/';
   static final String PAGE_INDEX = '/index';
+  static final String PAGE_SETTING = '/setting';
 
 
   static final routes = {
     PAGE_SPLASH:(context)=>PageSplash(),
     PAGE_INDEX:(context)=>PageIndex(),
+    PAGE_SETTING:(context,{arguments})=>PageSetting(arguments:arguments),
     //PAGE_INDEX:(context,{arguments})=>SearchPage(arguments:arguments),
   };
 
