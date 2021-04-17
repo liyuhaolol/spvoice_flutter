@@ -31,7 +31,7 @@ dependencies:
   # 获得版本信息的工具
   device_info: ^2.0.0
   # 消息提示框
-  fluttertoast: ^8.0.3
+  fluttertoast: ^8.0.4
 
 dev_dependencies:
   flutter_test:
