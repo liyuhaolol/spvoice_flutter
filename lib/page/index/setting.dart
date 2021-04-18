@@ -5,8 +5,15 @@ import 'package:spvoice_flutter/view/commonheadbar.dart';
 
 class PageSetting extends StatelessWidget {
   final arguments;
+  String _title;
 
-  PageSetting({this.arguments});
+  PageSetting({this.arguments}){
+    if(arguments != null){
+      _title = arguments['title'];
+    }else {
+      _title = '';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +29,7 @@ class PageSetting extends StatelessWidget {
         ),
           child: Column(
             children: [
-              CommonHead(arguments['title'],),
+              CommonHead(_title,),
               headIconArea(),
             ],
           ),

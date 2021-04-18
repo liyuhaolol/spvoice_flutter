@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:spvoice_flutter/anim/faderouteranim.dart';
+import 'package:spvoice_flutter/anim/fadeinrouteranim.dart';
+import 'package:spvoice_flutter/anim/fadeoutrouteranim.dart';
 import 'package:spvoice_flutter/anim/pagerouteranim.dart';
 import 'package:spvoice_flutter/page/index.dart';
 import 'package:spvoice_flutter/page/index/setting.dart';
@@ -40,8 +40,11 @@ class MyRouters{
     if(contentBuilder != null){
       //启动图是要使用渐变动画
       switch(name){
+        case PAGE_SPLASH:
+          return FadeOutRouterAnim((context, animation, secondaryAnimation)=>contentBuilder(context));
+          break;
         case PAGE_INDEX:
-          return FadeRouterAnim((context, animation, secondaryAnimation)=>contentBuilder(context));
+          return FadeInRouterAnim((context, animation, secondaryAnimation)=>contentBuilder(context));
           break;
         default:
           if(settings.arguments != null){
