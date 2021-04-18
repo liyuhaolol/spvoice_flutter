@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spvoice_flutter/anim/anim_data.dart';
 
 //给启动页的动画，包含渐变可见到不可见退出
 class FadeOutRouterAnim extends PageRouteBuilder{
@@ -13,12 +14,11 @@ class FadeOutRouterAnim extends PageRouteBuilder{
           Widget child
           ){
         //渐隐渐变效果
-        return FadeTransition(
-          opacity: Tween(begin: 1.0,end: 1.0).animate(animation),
-          child: FadeTransition(
-            opacity: Tween(begin: 1.0,end: 0.0).animate(secondaryAnimation),
-            child: child,
-          ),
+        return OnAnimIn(
+            animation,
+            FadeOutAnim(
+                secondaryAnimation,
+                child)
         );
       }
   );

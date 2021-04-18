@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spvoice_flutter/anim/anim_data.dart';
 
 //给首页的动画，包含渐变不可见到可见进入，左移动退出
 class FadeInRouterAnim extends PageRouteBuilder{
@@ -13,15 +14,11 @@ class FadeInRouterAnim extends PageRouteBuilder{
           Widget child
           ){
         //渐隐渐变效果
-        return FadeTransition(
-          opacity: Tween(begin: 0.0,end: 1.0).animate(animation),
-          child: SlideTransition(//横移返回动画
-            position: Tween<Offset>(
-              begin: Offset(0.0,0.0),
-              end:Offset(-0.25,0.0),
-            ).animate(secondaryAnimation),
-            child: child,
-          ),
+        return FadeInAnim(
+            animation,
+            ExitAnim(
+                secondaryAnimation,
+                child)
         );
       }
   );
