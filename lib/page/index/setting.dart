@@ -29,7 +29,7 @@ class PageSetting extends StatelessWidget {
         ),
           child: Column(
             children: [
-              CommonHead(_title,),
+              CommonHead(_title,hasLine: false,),
               headIconArea(),
             ],
           ),

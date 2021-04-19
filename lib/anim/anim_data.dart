@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-FadeTransition OnAnimIn(Animation<double> animation,Widget child){
+FadeTransition NoAnimIn(Animation<double> animation,Widget child){
   return FadeTransition(
     opacity: Tween(begin: 1.0,end: 1.0).animate(animation),
     child: child,
@@ -23,7 +23,10 @@ SlideTransition ExitAnim(Animation<double> secondaryAnimation,Widget child){
       begin: Offset(0.0,0.0),
       end:Offset(-0.25,0.0),
     ).animate(secondaryAnimation),
-    child: child,
+    child: FadeTransition(//变半透明
+      opacity: Tween(begin: 1.0,end: 0.5).animate(secondaryAnimation),
+      child: child,
+    ),
   );
 }
 

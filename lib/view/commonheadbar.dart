@@ -5,7 +5,7 @@ class CommonHead extends StatelessWidget {
   String _title;
   Color _lineColor;
 
-  CommonHead(this._title,{bool hasLine = false}){
+  CommonHead(this._title,{bool hasLine = true}){
     if(hasLine){
       _lineColor = gray_ed;
     }else{

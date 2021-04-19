@@ -14,7 +14,7 @@ class FadeOutRouterAnim extends PageRouteBuilder{
           Widget child
           ){
         //渐隐渐变效果
-        return OnAnimIn(
+        return NoAnimIn(
             animation,
             FadeOutAnim(
                 secondaryAnimation,
