@@ -20,20 +20,6 @@ class MyRouters{
     //PAGE_INDEX:(context,{arguments})=>SearchPage(arguments:arguments),
   };
 
-
-/*  static Function onGenerateRoute = (RouteSettings settings){
-    final String name = settings.name;
-    final Function contentBuilder = routes[name];
-    if(contentBuilder != null){
-      if(settings.arguments != null){
-        return MaterialPageRoute(builder: (context)=>contentBuilder(context,arguments:settings.arguments));
-      }else{
-        return MaterialPageRoute(builder: (context)=>contentBuilder(context));
-      }
-    }
-    return null;
-  };*/
-
   static Function onGenerateRoute = (RouteSettings settings){
     final String name = settings.name;
     final Function contentBuilder = routes[name];
@@ -57,6 +43,21 @@ class MyRouters{
     }
     return null;
   };
+
+
+
+/*  static Function onGenerateRoute = (RouteSettings settings){
+    final String name = settings.name;
+    final Function contentBuilder = routes[name];
+    if(contentBuilder != null){
+      if(settings.arguments != null){
+        return MaterialPageRoute(builder: (context)=>contentBuilder(context,arguments:settings.arguments));
+      }else{
+        return MaterialPageRoute(builder: (context)=>contentBuilder(context));
+      }
+    }
+    return null;
+  };*/
 }
 
 

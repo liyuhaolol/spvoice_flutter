@@ -9,3 +9,4 @@ final Color gray_ea = Color(0xFFeaeaea);
 final Color gray_5 = Color(0xFF555555);
 final Color gray_ed = Color(0xFFEDEDED);
 final Color gray_f4 = Color(0xFFf4f4f4);
+final Color green_switch = Color(0xFF2fb91f);
