@@ -46,6 +46,12 @@ class _PageSettingState extends State<PageSetting> {
               LineHeightSmall(),
               Push(),
               LineHeightSmall(),
+              Version(),
+              LineHeightBig(),
+              ClearCache(),
+              LineHeightBig(),
+              Email(),
+              LineHeightBig(),
             ],
           ),
         )
@@ -151,4 +157,121 @@ class _PageSettingState extends State<PageSetting> {
       ),
     );
   }
+
+  Widget Version(){
+    return Container(
+      color: Colors.white,
+      width: double.infinity,
+      height: 50,
+      child: Padding(
+        padding: EdgeInsets.only(left: 15,right: 20),
+        child: Row(
+          children: [
+            Image.asset('images/icon_my_version.png',height: 14,width: 14,),
+            SizedBox(width: 15,),
+            Expanded(
+              child: Text(
+                setting_version,
+                style: TextStyle(
+                    fontSize: 14,
+                    color: gray_5),
+              ),
+            ),
+            checkVersion(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget checkVersion(){
+    //强行返回有更新
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(right: 5),
+          child: Text(
+            version_new,
+            style: TextStyle(
+                fontSize: 14,
+                color: gray_5),
+          ),
+        ),
+        Positioned(
+          right: 0,
+          child: Container(
+            width: 5,
+            height: 5,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: red_dot,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget ClearCache(){
+    return Container(
+      color: Colors.white,
+      width: double.infinity,
+      height: 50,
+      child: Padding(
+        padding: EdgeInsets.only(left: 15,right: 20),
+        child: Row(
+          children: [
+            Image.asset('images/icon_my_cash.png',height: 14,width: 14,),
+            SizedBox(width: 15,),
+            Expanded(
+              child: Text(
+                setting_cache,
+                style: TextStyle(
+                    fontSize: 14,
+                    color: gray_5),
+              ),
+            ),
+            Text(
+              '0.00KB',
+              style: TextStyle(
+                  fontSize: 14,
+                  color: gray_5),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget Email(){
+    return Container(
+      color: Colors.white,
+      width: double.infinity,
+      height: 50,
+      child: Padding(
+        padding: EdgeInsets.only(left: 15,right: 20),
+        child: Row(
+          children: [
+            Image.asset('images/icon_my_cash.png',height: 14,width: 14,),
+            SizedBox(width: 15,),
+            Expanded(
+              child: Text(
+                setting_email,
+                style: TextStyle(
+                    fontSize: 14,
+                    color: gray_5),
+              ),
+            ),
+            Text(
+              setting_email_content,
+              style: TextStyle(
+                  fontSize: 14,
+                  color: gray_5),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  //
 }
