@@ -20,7 +20,7 @@ class MyRouters{
     //PAGE_INDEX:(context,{arguments})=>SearchPage(arguments:arguments),
   };
 
-  static Function onGenerateRoute = (RouteSettings settings){
+  static RouteFactory onGenerateRoute = (RouteSettings settings){
     final String? name = settings.name;
     final Function? contentBuilder = routes[name];
     if(contentBuilder != null){

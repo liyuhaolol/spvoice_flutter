@@ -45,7 +45,7 @@ class _SkipState extends State<Skip> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
+    WidgetsBinding.instance!
         .addPostFrameCallback((timeStamp) {
           //给100毫秒延迟，让UI反应一下，避免感觉第一秒很短
           Future.delayed(
