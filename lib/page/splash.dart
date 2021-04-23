@@ -38,7 +38,7 @@ class Skip extends StatefulWidget {
 }
 
 class _SkipState extends State<Skip> {
-  Timer _timer;
+  late Timer _timer;
   int _countdownTime = 3;
 
 
@@ -57,14 +57,13 @@ class _SkipState extends State<Skip> {
           );
           //startCountdownTimer();//启动计时器
     });
+    //WidgetsBinding.instance.addPostFrameCallback((timeStamp) { });
   }
 
   @override
   void dispose() {
     super.dispose();
-    if(_timer != null){
-      _timer.cancel();
-    }
+    _timer.cancel();
   }
   void startCountdownTimer(){
     const oneSec = const Duration(seconds: 1);
