@@ -3,7 +3,7 @@ import 'package:spvoice_flutter/res/colorlist.dart';
 
 class CommonHead extends StatelessWidget {
   String _title;
-  late Color _lineColor;
+  Color _lineColor;
 
   CommonHead(this._title,{bool hasLine = true}){
     if(hasLine){

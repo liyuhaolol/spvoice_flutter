@@ -38,14 +38,14 @@ class Skip extends StatefulWidget {
 }
 
 class _SkipState extends State<Skip> {
-  late Timer _timer;
+  Timer _timer;
   int _countdownTime = 3;
 
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!
+    WidgetsBinding.instance
         .addPostFrameCallback((timeStamp) {
           //给100毫秒延迟，让UI反应一下，避免感觉第一秒很短
           Future.delayed(

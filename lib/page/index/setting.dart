@@ -8,8 +8,8 @@ import 'package:spvoice_flutter/utils/toastutils.dart';
 import 'package:spvoice_flutter/view/commonheadbar.dart';
 
 class PageSetting extends StatefulWidget {
-  late final arguments;
-  late String _title;
+  final arguments;
+  String _title;
   bool status = false;
 
   PageSetting({this.arguments}){
