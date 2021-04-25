@@ -12,8 +12,9 @@ import Flutter
   }
 }
 
-extension FlutterViewController{
-    open override var preferredStatusBarStyle: UIStatusBarStyle{
-        return UIStatusBarStyle.lightContent
+class CustomFlutterViewController: FlutterViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "io.flutter.plugin.platform.SystemChromeOverlayNotificationName"), object: nil, userInfo: ["io.flutter.plugin.platform.SystemChromeOverlayNotificationKey":1])
     }
 }
