@@ -1,8 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spvoice_flutter/controller/base_view_controller.dart';
 import 'package:spvoice_flutter/controller/tab_loading_controller.dart';
-import 'package:spvoice_flutter/network/RequestCenter.dart';
+import 'package:spvoice_flutter/network/requestcenter.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
 import 'package:spvoice_flutter/res/stringlist.dart';
 
@@ -11,12 +13,9 @@ class ListLoadingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      child: ElevatedButton(
-        onPressed: (){
-          context.read<TabRequsetController>().setLoadState(ViewState.FAILURE);
-        },
-        child: Text('点击加载失败'),
-      ),
+      child: Image.asset('images/newslist_emty.png',
+      fit: BoxFit.fitWidth,
+      alignment: AlignmentDirectional.topStart,),
     );
   }
 }
