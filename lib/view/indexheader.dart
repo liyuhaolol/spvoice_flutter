@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
 import 'package:spvoice_flutter/utils/toastutils.dart';
 
-class MainPage extends StatelessWidget {
+class MainTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

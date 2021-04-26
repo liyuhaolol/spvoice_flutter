@@ -11,3 +11,4 @@ const Color gray_ed = Color(0xFFEDEDED);
 const Color gray_f4 = Color(0xFFf4f4f4);
 const Color green_switch = Color(0xFF2fb91f);
 const Color red_dot = Color(0xFFF54343);
+const Color gray_e5 = Color(0xFFe5e5e5);

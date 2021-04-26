@@ -11,3 +11,5 @@ const String version_new = '发现新版本';
 const String setting_cache = '清除缓存';
 const String setting_email = '电子邮件';
 const String setting_email_content = 'fijidaily@gmail.com';
+const String tab_request_fail = '请求栏目失败';
+const String refresh = '刷新';

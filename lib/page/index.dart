@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:spvoice_flutter/controller/tab_loading_controller.dart';
+import 'package:spvoice_flutter/network/RequestCenter.dart';
 import 'package:spvoice_flutter/view/indexbottombutton.dart';
 import 'package:spvoice_flutter/view/indexheader.dart';
 
@@ -17,11 +20,12 @@ class PageIndex extends StatelessWidget {
         ),
         child: Column(
           children: [
-            MainPage(),
+            MainTop(),
             Expanded(
-              child: Container(width: double.infinity,
-                color: Colors.amber,
-              child: Text('1'),),
+              child: ChangeNotifierProvider(
+                create: (context)=>TabRequsetController(),
+                child: MainPage(),
+              ),
             ),
             MainBottom(),
           ],
@@ -30,3 +34,24 @@ class PageIndex extends StatelessWidget {
     );
   }
 }
+
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    RequestCenter.getTab(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return context.watch<TabRequsetController>().getView();
+  }
+}
+
+
