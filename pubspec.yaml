@@ -38,6 +38,8 @@ dependencies:
   provider: ^5.0.0
   # 网络请求
   http: ^0.13.1
+  # 日志工具
+  logger: ^1.0.0
 
 dev_dependencies:
   flutter_test:

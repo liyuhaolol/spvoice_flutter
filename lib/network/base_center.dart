@@ -1,17 +1,32 @@
 import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 import 'package:spvoice_flutter/callback/http_callback.dart';
 
+var _logger = Logger(
+    printer: PrettyPrinter()
+);
 
-void getRequest(String url,RequestFailure requestFailure, {Map<String,String> headers,Map<String,String> bodyParams}) async{
+void getRequest(String url,RequestSuccess requestSuccess,RequestFailure requestFailure, {Map<String,String> headers,Map<String,String> bodyParams}) async{
   try{
-    var response = await get(Uri.parse(url),headers:headers);
+    String mUrl = url+'?';
+    if(bodyParams != null){
+      bodyParams.forEach((key, value) {
+        mUrl += '$key=$value&';
+      });
+    }
+    mUrl = mUrl.substring(0,mUrl.length-1);
+    print('url:$mUrl');
+    var response = await get(Uri.parse(mUrl),headers:headers);
     if(response.statusCode == 200){
-      print(response.body);
+      _logger.i("url:$mUrl\nresponse:${response.body}");
+      requestSuccess(response.headers,response.body);
     }else{
-      requestFailure();
+      _logger.e('StatusCode:${response.statusCode}');
+      requestFailure('StatusCode:${response.statusCode}');
     }
   } on Exception catch (e){
-    requestFailure();
+    _logger.e(e);
+    requestFailure(e.toString());
   }
 }
 

@@ -10,8 +10,12 @@ class RequestCenter {
   ///得到栏目列表
   static void getTab(BuildContext context){
     getRequest(
-        HttpConstants.GET_TAB, (){
+        HttpConstants.GET_TAB,(_,body){} ,(e){
           context.read<TabRequsetController>().setLoadState(ViewState.FAILURE);
+    },
+    bodyParams: {
+          "id" : "1",
+      "name" : "测试"
     });
   }
 }
