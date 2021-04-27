@@ -20,7 +20,7 @@ class ListLoadingView extends StatelessWidget {
   }
 }
 
-class listFailureView extends StatelessWidget{
+class ListFailureView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -65,3 +65,13 @@ class listFailureView extends StatelessWidget{
   }
 
 }
+
+class ListSuccessView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.amber,
+    );
+  }
+}
+
