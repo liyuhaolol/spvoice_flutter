@@ -1,6 +1,7 @@
 import 'package:http/http.dart';
 import 'package:logger/logger.dart';
-import 'package:spvoice_flutter/callback/http_callback.dart';
+
+import 'callback/http_callback.dart';
 
 var _logger = Logger(
     printer: PrettyPrinter()

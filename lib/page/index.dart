@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:spvoice_flutter/controller/tab_loading_controller.dart';
-import 'package:spvoice_flutter/network/requestcenter.dart';
+import 'package:spvoice_flutter/state/request_view_state.dart';
+import 'package:spvoice_flutter/state/tab_request_data.dart';
+import 'package:spvoice_flutter/view/index/tab/list_failure_view.dart';
+import 'package:spvoice_flutter/view/index/tab/list_loading_view.dart';
+import 'package:spvoice_flutter/view/index/tab/list_success_view.dart';
 import 'package:spvoice_flutter/view/indexbottombutton.dart';
 import 'package:spvoice_flutter/view/indexheader.dart';
 
@@ -23,7 +26,7 @@ class PageIndex extends StatelessWidget {
             MainTop(),
             Expanded(
               child: ChangeNotifierProvider(
-                create: (context)=>TabRequsetController(),
+                create: (context)=>TabRequestData(),
                 child: MainPage(),
               ),
             ),
@@ -35,23 +38,19 @@ class PageIndex extends StatelessWidget {
   }
 }
 
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-
-  @override
-  void initState() {
-    super.initState();
-    RequestCenter.getTab(context);
-  }
-
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return context.watch<TabRequsetController>().getView();
+    switch(context.watch<TabRequestData>().state){
+      case ViewState.INIT:
+        return ListLoadingView();
+      case ViewState.SUCCESS:
+        return ListSuccessView(context.watch<TabRequestData>().channelList);
+      case ViewState.FAILURE:
+        return ListFailureView();
+    }
   }
 }
+
 
 

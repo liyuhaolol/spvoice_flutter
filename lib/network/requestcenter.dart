@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:spvoice_flutter/controller/base_view_controller.dart';
-import 'package:spvoice_flutter/controller/tab_loading_controller.dart';
 import 'package:spvoice_flutter/model/channel.dart';
 import 'package:spvoice_flutter/network/base_center.dart';
 import 'package:spvoice_flutter/network/http_code.dart';
 import 'package:spvoice_flutter/network/httpconstants.dart';
+import 'package:spvoice_flutter/state/request_view_state.dart';
+import 'package:spvoice_flutter/state/tab_request_data.dart';
 
 class RequestCenter {
 
@@ -25,16 +25,16 @@ class RequestCenter {
                   mList.add(Channel.fromJson(v));
                 });
               }
-              context.read<TabRequsetController>().channelList = mList;
-              context.read<TabRequsetController>().setLoadState(ViewState.SUCCESS);
+              context.read<TabRequestData>().channelList = mList;
+              context.read<TabRequestData>().state = ViewState.SUCCESS;
               break;
             default:
-              context.read<TabRequsetController>().setLoadState(ViewState.FAILURE);
+              context.read<TabRequestData>().state = ViewState.FAILURE;
               break;
           }
     } ,
             (e){
-          context.read<TabRequsetController>().setLoadState(ViewState.FAILURE);
+          context.read<TabRequestData>().state = ViewState.FAILURE;
     });
   }
 }
