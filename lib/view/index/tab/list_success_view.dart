@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/model/channel.dart';
+import 'package:spvoice_flutter/res/colorlist.dart';
+import 'package:spvoice_flutter/view/overscroll_behavior.dart';
+import 'package:spvoice_flutter/view/tabbar/my_tabs.dart';
 
 // ignore: must_be_immutable
 class ListSuccessView extends StatefulWidget {
@@ -25,15 +28,33 @@ class _ListSuccessViewState extends State<ListSuccessView> with SingleTickerProv
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TabBar(
-            isScrollable: true,
-            unselectedLabelColor: Colors.blue,
-            labelColor: Colors.black,
-            tabs: getTabView(widget.channelList),
-            controller: _tabController,),
-          Expanded(child: TabBarView(
-            children: getTabBarView(widget.channelList),
-            controller: _tabController,),)
+          ScrollConfiguration(
+            behavior: OverScrollBehavior(),
+            child: Theme(
+              data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+              ),
+              child: MyTabBar(
+                isScrollable: true,
+                unselectedLabelColor: Colors.black,
+                labelColor: splash_background_start,
+                indicatorColor: splash_background_start,
+                indicatorSize: MyTabBarIndicatorSize.fixed,
+                labelStyle: TextStyle(
+                  fontSize: 16,
+                ),
+                labelPadding: EdgeInsets.only(left: 6,right: 6),
+                tabs: getTabView(widget.channelList),
+                controller: _tabController,),
+            ),
+          ),
+          Expanded(child: ScrollConfiguration(
+            behavior: OverScrollBehavior(),
+            child: TabBarView(
+              children: getTabBarView(widget.channelList),
+              controller: _tabController,),
+          ),)
         ],
       ),
     );
@@ -41,7 +62,7 @@ class _ListSuccessViewState extends State<ListSuccessView> with SingleTickerProv
   List<Widget> getTabView(List<Channel> channelList){
     List<Widget> mList = [];
     channelList.forEach((element) {
-      mList.add(Tab(text: element.channelName,));
+      mList.add(MyTab(text: element.channelName,tabHeight: 30,));
     });
     return mList;
   }
