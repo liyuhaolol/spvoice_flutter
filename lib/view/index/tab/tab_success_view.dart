@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/model/channel.dart';
+import 'package:spvoice_flutter/page/list_page.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
 import 'package:spvoice_flutter/view/overscroll_behavior.dart';
 import 'package:spvoice_flutter/view/tabbar/my_tabs.dart';
 
 // ignore: must_be_immutable
-class ListSuccessView extends StatefulWidget {
+class TabSuccessView extends StatefulWidget {
   List<Channel> channelList;
 
-  ListSuccessView(this.channelList);
+  TabSuccessView(this.channelList);
 
   @override
-  _ListSuccessViewState createState() => _ListSuccessViewState();
+  _TabSuccessViewState createState() => _TabSuccessViewState();
 }
 
-class _ListSuccessViewState extends State<ListSuccessView> with SingleTickerProviderStateMixin{
+class _TabSuccessViewState extends State<TabSuccessView> with SingleTickerProviderStateMixin{
   TabController _tabController;
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: widget.channelList.length, vsync: this);
+    _tabController = TabController(initialIndex: 0,length: widget.channelList.length, vsync: this);
   }
 
   @override
@@ -70,9 +71,7 @@ class _ListSuccessViewState extends State<ListSuccessView> with SingleTickerProv
   List<Widget> getTabBarView(List<Channel> channelList){
     List<Widget> mList = [];
     channelList.forEach((element) {
-      mList.add(Container(
-        color: Colors.amber,
-      ));
+      mList.add(ListPage(element.channelId));
     });
     return mList;
   }

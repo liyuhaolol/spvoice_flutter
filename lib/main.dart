@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:spvoice_flutter/routers/routers.dart';
+import 'package:spvoice_flutter/view/refresh/refresh_footer.dart';
+import 'package:spvoice_flutter/view/refresh/refresh_header.dart';
 
 void main() {
   /*SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -12,9 +15,14 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: MyRouters.PAGE_SPLASH,
-      onGenerateRoute: MyRouters.onGenerateRoute,
+    return RefreshConfiguration(
+      headerBuilder: ()=>NormalHeader(),
+      footerBuilder: ()=>NormalFooter(),
+      hideFooterWhenNotFull: true,
+      child: MaterialApp(
+        initialRoute: MyRouters.PAGE_SPLASH,
+        onGenerateRoute: MyRouters.onGenerateRoute,
+      ),
     );
   }
 }

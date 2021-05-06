@@ -40,6 +40,8 @@ dependencies:
   http: ^0.13.1
   # 日志工具
   logger: ^1.0.0
+  # 上下拉刷新框架
+  pull_to_refresh: ^1.6.5
 
 dev_dependencies:
   flutter_test:

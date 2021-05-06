@@ -7,7 +7,7 @@ var _logger = Logger(
     printer: PrettyPrinter()
 );
 
-void getRequest(String url,RequestSuccess requestSuccess,RequestFailure requestFailure, {Map<String,String> headers,Map<String,String> bodyParams}) async{
+Future getRequest(String url,RequestSuccess requestSuccess,RequestFailure requestFailure, {Map<String,String> headers,Map<String,String> bodyParams}) async{
   try{
     String mUrl = url+'?';
     if(bodyParams != null){

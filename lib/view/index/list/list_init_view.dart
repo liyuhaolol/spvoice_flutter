@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/network/requestcenter.dart';
 
-class ListLoadingView extends StatefulWidget {
+class ListInitView extends StatefulWidget {
   @override
-  _ListLoadingViewState createState() => _ListLoadingViewState();
+  _ListInitViewState createState() => _ListInitViewState();
 }
 
-class _ListLoadingViewState extends State<ListLoadingView> {
-  @override
-  void initState() {
-    super.initState();
-    RequestCenter.getTab(context);
-  }
+class _ListInitViewState extends State<ListInitView> {
   @override
   Widget build(BuildContext context) {
     return Container(

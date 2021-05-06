@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:spvoice_flutter/state/request_view_state.dart';
 import 'package:spvoice_flutter/state/tab_request_data.dart';
 
-class ListFailureView extends StatelessWidget {
+class TabFailureView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:spvoice_flutter/state/request_view_state.dart';
 import 'package:spvoice_flutter/state/tab_request_data.dart';
-import 'package:spvoice_flutter/view/index/tab/list_failure_view.dart';
-import 'package:spvoice_flutter/view/index/tab/list_loading_view.dart';
-import 'package:spvoice_flutter/view/index/tab/list_success_view.dart';
+import 'package:spvoice_flutter/view/index/tab/tab_failure_view.dart';
+import 'package:spvoice_flutter/view/index/tab/tab_loading_view.dart';
+import 'package:spvoice_flutter/view/index/tab/tab_success_view.dart';
 import 'package:spvoice_flutter/view/indexbottombutton.dart';
 import 'package:spvoice_flutter/view/indexheader.dart';
 
@@ -43,11 +43,11 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     switch(context.watch<TabRequestData>().state){
       case ViewState.INIT:
-        return ListLoadingView();
+        return TabLoadingView();
       case ViewState.SUCCESS:
-        return ListSuccessView(context.watch<TabRequestData>().channelList);
+        return TabSuccessView(context.watch<TabRequestData>().channelList);
       case ViewState.FAILURE:
-        return ListFailureView();
+        return TabFailureView();
     }
   }
 }
