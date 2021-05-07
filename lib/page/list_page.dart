@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:spvoice_flutter/data/static_data.dart';
+import 'package:spvoice_flutter/model/list_item.dart';
 import 'package:spvoice_flutter/network/http_code.dart';
 import 'package:spvoice_flutter/network/httpconstants.dart';
 import 'package:spvoice_flutter/network/requestcenter.dart';
 import 'package:spvoice_flutter/state/main_list_request_data.dart';
 import 'package:spvoice_flutter/state/request_view_state.dart';
 import 'package:spvoice_flutter/view/index/list/list_init_view.dart';
-import 'package:spvoice_flutter/view/index/tab/tab_loading_view.dart';
+import 'package:spvoice_flutter/view/news_view.dart';
 
 ///所有新闻列表页通用的list展示
 class ListPage extends StatefulWidget {
@@ -25,17 +27,20 @@ class _ListPageState extends State<ListPage> with AutomaticKeepAliveClientMixin{
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
-    return ChangeNotifierProvider(
-      create: (context)=> MainListRequestData(),
-      child: SyncPage(widget.id),
+    //super.build(context);
+    return LayoutBuilder(
+      builder: (_,constraints)=>ChangeNotifierProvider(
+        create: (context)=> MainListRequestData(),
+        child: SyncPage(widget.id,constraints.maxHeight),
+      ),
     );
   }
 }
 
 class SyncPage extends StatefulWidget {
   int id;
-  SyncPage(this.id);
+  double viewPortHeight;
+  SyncPage(this.id,this.viewPortHeight);
 
   @override
   _SyncPageState createState() => _SyncPageState();
@@ -54,7 +59,7 @@ class _SyncPageState extends State<SyncPage> {
       case ViewState.INIT:
         return ListInitView();
       default:
-        return MainListPage(widget.id);
+        return MainListPage(widget.id,widget.viewPortHeight);
     }
   }
 }
@@ -62,14 +67,14 @@ class _SyncPageState extends State<SyncPage> {
 
 class MainListPage extends StatefulWidget {
   int id;
-  MainListPage(this.id);
+  double viewPortHeight;
+  MainListPage(this.id,this.viewPortHeight);
 
   @override
   _MainListPageState createState() => _MainListPageState();
 }
 
 class _MainListPageState extends State<MainListPage> {
-  List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8"];
   RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   @override
@@ -80,16 +85,47 @@ class _MainListPageState extends State<MainListPage> {
   Widget build(BuildContext context) {
     return SmartRefresher(
       enablePullDown: true,
-      enablePullUp: true,
+      enablePullUp: Provider.of<MainListRequestData>(context, listen: false).list.length >= StaticData.newsListSize,
       controller: _refreshController,
       onRefresh: _onRefresh,
       onLoading: _onLoading,
-      child: ListView.builder(
-        itemBuilder: (context, index) => Card(child: Center(child: Text('${index+1}'))),
-        itemExtent: 100.0,
-        itemCount: context.watch<MainListRequestData>().list.length,
-      ),
-    );
+      child: ListView(
+        children: _buildList(context, widget.viewPortHeight),
+      ));
+  }
+
+  List<Widget> _buildList(BuildContext context,double viewPortHeight){
+    List<Widget> mList = [];
+    if(context.watch<MainListRequestData>().bannerList != null && context.watch<MainListRequestData>().bannerList.length > 0){
+      ///存在轮播图
+      mList.add(Center(child: Text('轮播图'),));
+    }
+    context.watch<MainListRequestData>().list.forEach((element) {
+      switch(element.contentTypeId){
+        case News.EMPTY:
+          mList.add(EmptyListItem(context,viewPortHeight));
+          break;
+        case News.TEXT:///纯文稿件
+        mList.add(TextListItem(element));
+          break;
+        case News.SMALLIMG:///图文稿件
+          mList.add(OnePicListItem(element));
+          break;
+        case News.BIGIMG:///图集稿件
+          mList.add(Center(child: Text('图集稿件'),));
+          break;
+        case News.URL:///链接稿件
+          mList.add(Center(child: Text('链接稿件'),));
+          break;
+        case News.ATLASLEFT:///左三图稿件
+          mList.add(Center(child: Text('左三图稿件'),));
+          break;
+        case News.VIDEO:///视频稿件
+          mList.add(Center(child: Text('视频稿件'),));
+          break;
+      }
+    });
+    return mList;
   }
 
   void _onRefresh() async{
@@ -102,7 +138,11 @@ class _MainListPageState extends State<MainListPage> {
     int code = await RequestCenter.getMainList(context, widget.id, HttpConstants.PULL_UP);
     switch(code){
       case HttpCode.SUCCESS:
-        _refreshController.loadComplete();
+        if(Provider.of<MainListRequestData>(context, listen: false).pageNum >= Provider.of<MainListRequestData>(context, listen: false).pages){
+          _refreshController.loadNoData();
+        }else{
+          _refreshController.loadComplete();
+        }
         break;
       case HttpCode.NO_DATA:
         _refreshController.loadNoData();

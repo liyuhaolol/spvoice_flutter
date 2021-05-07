@@ -70,6 +70,9 @@ class RequestCenter {
             if(context.read<MainListRequestData>().bannerList != null){
               context.read<MainListRequestData>().bannerList.clear();
             }
+            context.read<MainListRequestData>().pageNum = 0;
+            context.read<MainListRequestData>().pages = 0;
+            context.read<MainListRequestData>().total = 0;
           }
           context.read<MainListRequestData>().state = ViewState.SUCCESS;
           pullCode = HttpCode.NO_DATA;

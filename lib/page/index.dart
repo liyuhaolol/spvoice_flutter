@@ -45,7 +45,7 @@ class MainPage extends StatelessWidget {
       case ViewState.INIT:
         return TabLoadingView();
       case ViewState.SUCCESS:
-        return TabSuccessView(context.watch<TabRequestData>().channelList);
+        return TabSuccessView(Provider.of<TabRequestData>(context, listen: false).channelList);
       case ViewState.FAILURE:
         return TabFailureView();
     }
