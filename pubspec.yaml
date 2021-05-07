@@ -44,6 +44,8 @@ dependencies:
   pull_to_refresh: ^1.6.5
   # 日期格式化
   date_format: ^2.0.2
+  # 图片框架
+  cached_network_image: ^3.0.0
 
 dev_dependencies:
   flutter_test:

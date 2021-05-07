@@ -118,7 +118,7 @@ class _MainListPageState extends State<MainListPage> {
           mList.add(Center(child: Text('链接稿件'),));
           break;
         case News.ATLASLEFT:///左三图稿件
-          mList.add(Center(child: Text('左三图稿件'),));
+          mList.add(ThreePicListItem(context, element));
           break;
         case News.VIDEO:///视频稿件
           mList.add(Center(child: Text('视频稿件'),));
