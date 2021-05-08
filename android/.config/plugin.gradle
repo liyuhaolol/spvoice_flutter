@@ -28,7 +28,7 @@ ext {
             //自我维护的框架
             ft_httpcenter           : '1.1.0',
             ft_webview              : '1.0.7',
-            lib_utils               : '1.2.0',
+            lib_utils               : '1.2.1',
             lib_lifecycle           : '1.0.1',
             lib_image               : '1.1.5',
             timer                   : '1.0.1',
