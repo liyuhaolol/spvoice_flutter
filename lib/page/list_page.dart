@@ -106,22 +106,20 @@ class _MainListPageState extends State<MainListPage> {
           mList.add(EmptyListItem(context,viewPortHeight));
           break;
         case News.TEXT:///纯文稿件
+        case News.URL:///链接稿件
         mList.add(TextListItem(element));
           break;
         case News.SMALLIMG:///图文稿件
           mList.add(OnePicListItem(element));
           break;
         case News.BIGIMG:///图集稿件
-          mList.add(Center(child: Text('图集稿件'),));
-          break;
-        case News.URL:///链接稿件
-          mList.add(Center(child: Text('链接稿件'),));
+          mList.add(BigPicListItem(element));
           break;
         case News.ATLASLEFT:///左三图稿件
           mList.add(ThreePicListItem(context, element));
           break;
         case News.VIDEO:///视频稿件
-          mList.add(Center(child: Text('视频稿件'),));
+          mList.add(VideoListItem(element));
           break;
       }
     });

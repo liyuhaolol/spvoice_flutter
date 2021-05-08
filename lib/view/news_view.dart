@@ -198,6 +198,108 @@ Widget ThreePicListItem(BuildContext context,News news){
   );
 }
 
+Widget BigPicListItem(News news){
+  List<Widget> bottomLine = [];
+  if(news.contentSource != null && news.contentSource.isNotEmpty){
+    bottomLine.add(_getSmallText(news.contentSource));
+    bottomLine.add(SizedBox(width: 10,));
+  }
+  bottomLine.add(_getSmallText(TimeUtils.getShowTime(news.contentReleaseTime)));
+  String imgUrl = '';
+  if(news.contentListImg != null && news.contentListImg.length > 0){
+    imgUrl = news.contentListImg[0];
+  }
+  return Column(
+    children: [
+      GestureDetector(
+        onTap: (){
+          showToast('图集稿件');
+        },
+        child: Container(
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.topLeft,
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: AspectRatio(
+                  aspectRatio: 16/9,
+                  child: _getImage(imgUrl),
+                ),
+              ),
+              SizedBox(height: 10,),
+              _getTitleText(news.contentTitle,maxlines: 2),
+              SizedBox(height: 10,),
+              Row(
+                textBaseline: TextBaseline.alphabetic,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                children: bottomLine,
+              )
+            ],
+          ),
+        ),
+      ),
+      _divider(),
+    ],
+  );
+}
+
+Widget VideoListItem(News news){
+  List<Widget> bottomLine = [];
+  if(news.contentSource != null && news.contentSource.isNotEmpty){
+    bottomLine.add(_getSmallText(news.contentSource));
+    bottomLine.add(SizedBox(width: 10,));
+  }
+  bottomLine.add(_getSmallText(TimeUtils.getShowTime(news.contentReleaseTime)));
+  String imgUrl = '';
+  if(news.contentListImg != null && news.contentListImg.length > 0){
+    imgUrl = news.contentListImg[0];
+  }
+  return Column(
+    children: [
+      GestureDetector(
+        onTap: (){
+          showToast('视频稿件');
+        },
+        child: Container(
+          padding: EdgeInsets.all(15),
+          alignment: Alignment.topLeft,
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: AspectRatio(
+                  aspectRatio: 16/9,
+                  child: Stack(
+                    children: [
+                      Container(color: Colors.black,),
+                      _getVideoImage(imgUrl),
+                      Center(
+                        child: Image.asset('images/icon_play.png',width: 60,height: 60,),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 10,),
+              _getTitleText(news.contentTitle,maxlines: 2),
+              SizedBox(height: 10,),
+              Row(
+                textBaseline: TextBaseline.alphabetic,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                children: bottomLine,
+              )
+            ],
+          ),
+        ),
+      ),
+      _divider(),
+    ],
+  );
+}
+
 Widget _getSmallText(String content){
   return Text(content,
     style: TextStyle(
@@ -225,6 +327,19 @@ Widget _getImage(String url){
     errorWidget: (context, url, error) => Container(color: gray_e5,),
     fit: BoxFit.cover,
     alignment: Alignment.lerp(Alignment.topLeft, Alignment.topRight, 0.5),
+    fadeInDuration: Duration(milliseconds: 0),
+    fadeOutDuration: Duration(milliseconds: 0),
+  );
+}
+
+Widget _getVideoImage(String url){
+  return CachedNetworkImage(
+    imageUrl: url,
+    placeholder: (context, url) => Container(color: Colors.black,),
+    errorWidget: (context, url, error) => Container(color: Colors.black,),
+    fit: BoxFit.contain,
+    width: double.infinity,
+    height: double.infinity,
     fadeInDuration: Duration(milliseconds: 0),
     fadeOutDuration: Duration(milliseconds: 0),
   );
