@@ -7,6 +7,8 @@ import 'package:spvoice_flutter/res/stringlist.dart';
 import 'package:spvoice_flutter/routers/routers.dart';
 import 'package:spvoice_flutter/utils/time_utils.dart';
 
+const double _itemHeight = 85;///图文稿件item高度
+
 ///轮播图
 Widget SwiperView(BuildContext context,List<News> bannerList){
   double screenWidth = MediaQuery.of(context).size.width;
@@ -132,7 +134,7 @@ Widget OnePicListItem(BuildContext context,News news){
       GestureDetector(
         onTap: ()=>_goToWebDetail(context,news),
         child: Container(
-          height: 85,
+          height: _itemHeight,
           padding: EdgeInsets.all(15),
           alignment: Alignment.topLeft,
           color: Colors.white,
@@ -410,4 +412,8 @@ void _goToWebDetail(BuildContext context,News news){
         'news':news,
       }
   );
+}
+
+double getOnePicItemHeight(){
+  return _itemHeight;
 }

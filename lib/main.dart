@@ -18,6 +18,7 @@ class App extends StatelessWidget {
     return RefreshConfiguration(
       headerBuilder: ()=>NormalHeader(),
       footerBuilder: ()=>NormalFooter(),
+      footerTriggerDistance: getTriggerDistance(),
       hideFooterWhenNotFull: true,
       child: MaterialApp(
         initialRoute: MyRouters.PAGE_SPLASH,
