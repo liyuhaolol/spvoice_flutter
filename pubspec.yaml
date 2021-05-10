@@ -46,6 +46,10 @@ dependencies:
   date_format: ^2.0.2
   # 图片框架
   cached_network_image: ^3.0.0
+  # 轮播图
+  flutter_swiper_null_safety: ^1.0.1
+  # webview
+  webview_flutter: ^2.0.4
 
 dev_dependencies:
   flutter_test:

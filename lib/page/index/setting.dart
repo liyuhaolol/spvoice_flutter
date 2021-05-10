@@ -37,22 +37,26 @@ class _PageSettingState extends State<PageSetting> {
             //Android
             systemNavigationBarIconBrightness: Brightness.dark,
           ),
-          child: Column(
-            children: [
-              CommonHead(widget._title,hasLine: false,),
-              headIconArea(),
-              LineHeightBig(),
-              Feedback(),
-              LineHeightSmall(),
-              Push(),
-              LineHeightSmall(),
-              Version(),
-              LineHeightBig(),
-              ClearCache(),
-              LineHeightBig(),
-              Email(),
-              LineHeightBig(),
-            ],
+          child: Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+            child: Column(
+              children: [
+                CommonHead(widget._title,hasLine: false,),
+                headIconArea(),
+                LineHeightBig(),
+                Feedback(),
+                LineHeightSmall(),
+                Push(),
+                LineHeightSmall(),
+                Version(),
+                LineHeightBig(),
+                ClearCache(),
+                LineHeightBig(),
+                Email(),
+                LineHeightBig(),
+
+              ],
+            ),
           ),
         )
     );

@@ -96,30 +96,30 @@ class _MainListPageState extends State<MainListPage> {
 
   List<Widget> _buildList(BuildContext context,double viewPortHeight){
     List<Widget> mList = [];
-    if(context.watch<MainListRequestData>().bannerList != null && context.watch<MainListRequestData>().bannerList.length > 0){
+    if(Provider.of<MainListRequestData>(context, listen: false).bannerList != null && Provider.of<MainListRequestData>(context, listen: false).bannerList.length > 0){
       ///存在轮播图
-      mList.add(Center(child: Text('轮播图'),));
+      mList.add(SwiperView(context,Provider.of<MainListRequestData>(context, listen: false).bannerList));
     }
-    context.watch<MainListRequestData>().list.forEach((element) {
+    Provider.of<MainListRequestData>(context, listen: false).list.forEach((element) {
       switch(element.contentTypeId){
         case News.EMPTY:
           mList.add(EmptyListItem(context,viewPortHeight));
           break;
         case News.TEXT:///纯文稿件
         case News.URL:///链接稿件
-        mList.add(TextListItem(element));
+        mList.add(TextListItem(context,element));
           break;
         case News.SMALLIMG:///图文稿件
-          mList.add(OnePicListItem(element));
+          mList.add(OnePicListItem(context,element));
           break;
         case News.BIGIMG:///图集稿件
-          mList.add(BigPicListItem(element));
+          mList.add(BigPicListItem(context,element));
           break;
         case News.ATLASLEFT:///左三图稿件
           mList.add(ThreePicListItem(context, element));
           break;
         case News.VIDEO:///视频稿件
-          mList.add(VideoListItem(element));
+          mList.add(VideoListItem(context,element));
           break;
       }
     });

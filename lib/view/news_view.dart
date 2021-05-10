@@ -1,10 +1,63 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:spvoice_flutter/model/list_item.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
 import 'package:spvoice_flutter/res/stringlist.dart';
+import 'package:spvoice_flutter/routers/routers.dart';
 import 'package:spvoice_flutter/utils/time_utils.dart';
-import 'package:spvoice_flutter/utils/toastutils.dart';
+
+///轮播图
+Widget SwiperView(BuildContext context,List<News> bannerList){
+  double screenWidth = MediaQuery.of(context).size.width;
+  double itemHeight = screenWidth / 16 * 9 +20;
+  return Container(
+    height: itemHeight,
+    child: Swiper(
+      itemCount: bannerList.length,
+      itemBuilder: (context,index){
+        return Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Stack(
+            children: [
+              _getImage(_getImageUrl(bannerList[index])),
+              Positioned(
+                bottom: 0,
+                child: Container(
+                  width: screenWidth,
+                  height: 32,
+                  color: black_80,
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(left: 20,right: 20),
+                  child: Text(bannerList[index].contentTitle,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
+      autoplay: true,
+      pagination: new SwiperPagination(builder: DotSwiperPaginationBuilder(
+        color: gray_e6,
+        activeColor: gray_b3,
+        size: 5,
+        activeSize: 5,
+        space: 5,
+      ),
+      margin: EdgeInsets.all(0)),
+      autoplayDelay: 5000,
+      duration: 200,
+      onTap: (index)=>_goToWebDetail(context,bannerList[index]),
+    ),
+  );
+}
 
 ///空占位item
 Widget EmptyListItem(BuildContext context,double viewPortHeight){
@@ -31,7 +84,7 @@ Widget EmptyListItem(BuildContext context,double viewPortHeight){
 }
 
 ///纯文稿件
-Widget TextListItem(News news){
+Widget TextListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
   if(news.contentSource != null && news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
@@ -41,9 +94,7 @@ Widget TextListItem(News news){
   return Column(
     children: [
       GestureDetector(
-        onTap: (){
-          showToast('纯文稿件');
-        },
+        onTap: ()=>_goToWebDetail(context,news),
         child: Container(
           padding: EdgeInsets.all(15),
           alignment: Alignment.topLeft,
@@ -68,23 +119,18 @@ Widget TextListItem(News news){
 }
 
 ///图文稿件
-Widget OnePicListItem(News news){
+Widget OnePicListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
   if(news.contentSource != null && news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
   bottomLine.add(_getSmallText(TimeUtils.getShowTime(news.contentReleaseTime)));
-  String imgUrl = '';
-  if(news.contentListImg != null && news.contentListImg.length > 0){
-    imgUrl = news.contentListImg[0];
-  }
+  String imgUrl = _getImageUrl(news);
   return Column(
     children: [
       GestureDetector(
-        onTap: (){
-          showToast('图文稿件');
-        },
+        onTap: ()=>_goToWebDetail(context,news),
         child: Container(
           height: 85,
           padding: EdgeInsets.all(15),
@@ -147,9 +193,7 @@ Widget ThreePicListItem(BuildContext context,News news){
   return Column(
     children: [
       GestureDetector(
-        onTap: (){
-          showToast('三图稿件');
-        },
+        onTap: ()=>_goToWebDetail(context,news),
         child: Container(
           padding: EdgeInsets.all(15),
           alignment: Alignment.topLeft,
@@ -198,23 +242,19 @@ Widget ThreePicListItem(BuildContext context,News news){
   );
 }
 
-Widget BigPicListItem(News news){
+///图集稿件
+Widget BigPicListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
   if(news.contentSource != null && news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
   bottomLine.add(_getSmallText(TimeUtils.getShowTime(news.contentReleaseTime)));
-  String imgUrl = '';
-  if(news.contentListImg != null && news.contentListImg.length > 0){
-    imgUrl = news.contentListImg[0];
-  }
+  String imgUrl = _getImageUrl(news);
   return Column(
     children: [
       GestureDetector(
-        onTap: (){
-          showToast('图集稿件');
-        },
+        onTap: ()=>_goToWebDetail(context,news),
         child: Container(
           padding: EdgeInsets.all(15),
           alignment: Alignment.topLeft,
@@ -245,23 +285,19 @@ Widget BigPicListItem(News news){
   );
 }
 
-Widget VideoListItem(News news){
+///视频稿件
+Widget VideoListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
   if(news.contentSource != null && news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
   bottomLine.add(_getSmallText(TimeUtils.getShowTime(news.contentReleaseTime)));
-  String imgUrl = '';
-  if(news.contentListImg != null && news.contentListImg.length > 0){
-    imgUrl = news.contentListImg[0];
-  }
+  String imgUrl = _getImageUrl(news);
   return Column(
     children: [
       GestureDetector(
-        onTap: (){
-          showToast('视频稿件');
-        },
+        onTap: ()=>_goToWebDetail(context,news),
         child: Container(
           padding: EdgeInsets.all(15),
           alignment: Alignment.topLeft,
@@ -326,6 +362,8 @@ Widget _getImage(String url){
     placeholder: (context, url) => Container(color: gray_e5,),
     errorWidget: (context, url, error) => Container(color: gray_e5,),
     fit: BoxFit.cover,
+    width: double.infinity,
+    height: double.infinity,
     alignment: Alignment.lerp(Alignment.topLeft, Alignment.topRight, 0.5),
     fadeInDuration: Duration(milliseconds: 0),
     fadeOutDuration: Duration(milliseconds: 0),
@@ -352,5 +390,24 @@ Widget _divider(){
       color: gray_ea,
       height: 0.5,
     ),
+  );
+}
+
+String _getImageUrl(News news){
+  String imgUrl = '';
+  if(news.contentListImg != null && news.contentListImg.length > 0){
+    imgUrl = news.contentListImg[0];
+  }
+  return imgUrl;
+}
+
+void _goToWebDetail(BuildContext context,News news){
+  ///这里就先不做类型判断了因为是个范例，不存在多种web详情页
+  Navigator.pushNamed(
+      context,
+      MyRouters.PAGE_NEWS_DETAIL,
+      arguments: {
+        'news':news,
+      }
   );
 }

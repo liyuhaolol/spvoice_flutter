@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spvoice_flutter/anim/fadeinrouteranim.dart';
 import 'package:spvoice_flutter/anim/fadeoutrouteranim.dart';
 import 'package:spvoice_flutter/anim/pagerouteranim.dart';
+import 'package:spvoice_flutter/page/detail/news_detail.dart';
 import 'package:spvoice_flutter/page/index.dart';
 import 'package:spvoice_flutter/page/index/setting.dart';
 import 'package:spvoice_flutter/page/splash.dart';
@@ -10,6 +11,7 @@ class MyRouters{
   static const String PAGE_SPLASH = '/';
   static const String PAGE_INDEX = '/index';
   static const String PAGE_SETTING = '/setting';
+  static const String PAGE_NEWS_DETAIL = '/news_detail';
 
 
   static final routes = {
@@ -17,6 +19,7 @@ class MyRouters{
     PAGE_INDEX:(context)=>PageIndex(),
     //PAGE_INDEX:(context)=>PageIndex(),
     PAGE_SETTING:(context,{arguments})=>PageSetting(arguments:arguments),
+    PAGE_NEWS_DETAIL:(context,{arguments})=>NewsDetail(arguments:arguments),
     //PAGE_INDEX:(context,{arguments})=>SearchPage(arguments:arguments),
   };
 
