@@ -6,8 +6,8 @@ ext {
     ]
 
     libs = [
-            appcompact              : '1.2.0',
-            design                  : '1.3.0',
+            appcompact              : '1.3.1',
+            design                  : '1.4.0',
             constraint              : '2.0.4',
             fastjson                : '1.1.72.android',
             recyclerviewadapter     : '3.0.6',
