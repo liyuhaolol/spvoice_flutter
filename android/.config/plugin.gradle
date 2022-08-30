@@ -1,8 +1,7 @@
 ext {
     androids = [
-            compileSdkVersion             : 30,
-            targetSdkVersion              : 30,
-            buildToolsVersion             : "30.0.3",
+            compileSdkVersion             : 31,
+            targetSdkVersion              : 31,
     ]
 
     libs = [
