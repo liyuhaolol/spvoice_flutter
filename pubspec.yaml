@@ -27,29 +27,29 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.3
+  cupertino_icons: ^1.0.5
   # 获得版本信息的工具
   # device_info: ^2.0.0
   # 消息提示框
-  fluttertoast: ^8.0.7
+  fluttertoast: ^8.1.1
   # 开关按钮
   flutter_switch: ^0.3.2
   # 状态管理
-  provider: ^5.0.0
+  provider: ^6.0.4
   # 网络请求
-  http: ^0.13.3
+  http: ^0.13.5
   # 日志工具
-  logger: ^1.0.0
+  logger: ^1.1.0
   # 上下拉刷新框架
   pull_to_refresh: ^2.0.0
   # 日期格式化
-  date_format: ^2.0.2
+  date_format: ^2.0.7
   # 图片框架
-  cached_network_image: ^3.1.0
+  cached_network_image: ^3.2.2
   # 轮播图
   flutter_swiper_null_safety: ^1.0.2
   # webview
-  webview_flutter: ^2.0.10
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_test:

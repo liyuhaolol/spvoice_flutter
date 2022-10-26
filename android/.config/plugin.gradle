@@ -1,7 +1,7 @@
 ext {
     androids = [
-            compileSdkVersion             : 31,
-            targetSdkVersion              : 31,
+            compileSdkVersion             : 33,
+            targetSdkVersion              : 33,
     ]
 
     libs = [
@@ -27,7 +27,7 @@ ext {
             //自我维护的框架
             ft_httpcenter           : '1.1.0',
             ft_webview              : '1.0.7',
-            lib_utils               : '1.2.2',
+            lib_utils               : '1.3.9',
             lib_lifecycle           : '1.0.1',
             lib_image               : '1.1.5',
             timer                   : '1.0.1',
