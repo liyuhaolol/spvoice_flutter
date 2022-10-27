@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.github.spvoice_flutter.splashanimate.NoAlphaDrawableSplashScreen;
+import com.github.spvoice_flutter.utils.NtpToken;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.android.FlutterView;
@@ -22,7 +23,7 @@ public class MainActivity extends FlutterActivity {
 
     /*FlutterView fv;
     FlutterEngine flutterEngine;*/
-
+    NtpToken token;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends FlutterActivity {
         //setContentView(R.layout.activity_main);
         TranslucentUtils.setTranslucentBoth(getWindow());
         getWindow().setDecorFitsSystemWindows(false);
+        token = new NtpToken(getFlutterEngine().getDartExecutor().getBinaryMessenger(),this);
         /*fv = findViewById(R.id.fv);
         flutterEngine = new FlutterEngine(this);
         flutterEngine.getDartExecutor().executeDartEntrypoint(

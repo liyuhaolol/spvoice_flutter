@@ -56,4 +56,8 @@ dependencies {
     implementation "com.google.android.material:material:${libs.design}"
     //通用的工具类
     implementation "com.github.liyuhaolol:CommonUtils:${libs.lib_utils}"
+    //token
+    implementation files('libs/TokenUtil.jar')
+    //fastjson
+    implementation "com.alibaba:fastjson:${libs.fastjson}"
 }

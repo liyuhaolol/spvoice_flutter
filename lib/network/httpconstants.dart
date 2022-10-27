@@ -21,4 +21,6 @@ class HttpConstants{
       return GET_NEWS_LIST_UP;
     }
   }
+
+  static const String GET_NEWS_CHANNEL = 'https://app.offshoremedia.net/app/channel/v1/list';
 }

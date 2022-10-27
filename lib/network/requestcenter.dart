@@ -11,6 +11,8 @@ import 'package:spvoice_flutter/state/main_list_request_data.dart';
 import 'package:spvoice_flutter/state/request_view_state.dart';
 import 'package:spvoice_flutter/state/tab_request_data.dart';
 
+import '../utils/token.dart';
+
 class RequestCenter {
 
   ///得到栏目列表
@@ -94,9 +96,30 @@ class RequestCenter {
     }, (e){
       context.read<MainListRequestData>().state = ViewState.FAILURE;
       pullCode = HttpCode.SERVER_ERROR;
-    },bodyParams: {
+    },
+        headers:await generateHeader(context),
+        bodyParams: {
       'channelId':'$channelId'
     });
     return pullCode;
+  }
+  
+  static Future<Map<String, String>> generateHeader(BuildContext context) async {
+    Map<String,String> headers = Map();
+    headers['appKey'] = 'TY71007273147079';
+    String json = "{\"siteId\":\"710072731470794752\",\"platform\":\"Android\",\"userId\":\"123456789\"}";
+    String token = await NtpToken.getNtpToken(
+    json,
+    "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWYWJvPKKbp5rabEIsV98ubfWeahj04O5uTSzQNDvBAZ7/FzwioILyjpSqE8GCCI8T0MCWd7WW6OWn2aMClvosUYq+BnBt7rH3d8yRwuraUDzpo0cah8amyrQBJ6ky42BPXbcloV12ogjG29GlQTPVJ2gCiKSYedOcgN2sb1u7PQIDAQAB"
+    );
+    headers['appToken'] = token;
+    return headers;
+  }
+  
+  ///测试正式服接口
+  static void getTab2(BuildContext context) async{
+    getRequest(
+        HttpConstants.GET_NEWS_CHANNEL, (_,body){}, (e) {},
+    headers: await generateHeader(context));
   }
 }
