@@ -14,7 +14,11 @@ class NtpToken{
     int a = 1;
     try{
       _channel = MethodChannel(_channelName);
-      token = await _channel.invokeMethod(_methodName,[json,rsa,a]);
+      Map<String,Object> arguments = Map();
+      arguments['json'] = json;
+      arguments['rsa'] = rsa;
+      arguments['a'] = a;
+      token = await _channel.invokeMethod(_methodName,arguments);
     } on PlatformException catch (e) {
       _logger.e("Failed to get token: '${e.message}'.");
     }

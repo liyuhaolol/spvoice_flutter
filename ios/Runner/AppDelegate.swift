@@ -8,6 +8,7 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+      EncryptorForFlutter.register(with: self.registrar(forPlugin: "EncryptorForFlutter")!);
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

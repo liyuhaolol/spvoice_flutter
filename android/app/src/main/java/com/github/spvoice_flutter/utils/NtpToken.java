@@ -9,6 +9,7 @@ import com.hwzx.token.CmpTokenUtil;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Map;
 
 import io.flutter.Log;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -46,10 +47,11 @@ public class NtpToken implements BinaryMessenger, MethodChannel.MethodCallHandle
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
         if (call.method.equals(methodName)){
-            ArrayList<String> arguments = (ArrayList<String>) call.arguments;
+            //ArrayList<String> arguments = (ArrayList<String>) call.arguments;
+            Map<String,Object> arguments = (Map<String, Object>) call.arguments;
             result.success(CmpTokenUtil.getCmpToken(
-                    arguments.get(0),
-                    arguments.get(1),
+                    (String) arguments.get("json"),
+                    (String) arguments.get("rsa"),
                     SntpClient.getInstance().getTime(context)));
         }else {
             result.notImplemented();
