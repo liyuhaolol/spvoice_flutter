@@ -10,7 +10,7 @@ class _TabLoadingViewState extends State<TabLoadingView> {
   @override
   void initState() {
     super.initState();
-    RequestCenter.getTab(context);
+    //RequestCenter.getTab(context);
     RequestCenter.getTab2(context);
   }
   @override

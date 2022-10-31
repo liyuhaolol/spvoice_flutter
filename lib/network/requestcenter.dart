@@ -119,7 +119,26 @@ class RequestCenter {
   ///测试正式服接口
   static void getTab2(BuildContext context) async{
     getRequest(
-        HttpConstants.GET_NEWS_CHANNEL, (_,body){}, (e) {},
+        HttpConstants.GET_NEWS_CHANNEL, (_,body){
+      Map result = json.decode(body);
+      switch(result['code']){
+        case HttpCode.SUCCESS:
+          List<Channel> mList = [];
+          if(result['info'] != null){
+            result['info'].forEach((v){
+              mList.add(Channel.fromJson(v));
+            });
+          }
+          context.read<TabRequestData>().channelList = mList;
+          context.read<TabRequestData>().state = ViewState.SUCCESS;
+          break;
+        default:
+          context.read<TabRequestData>().state = ViewState.FAILURE;
+          break;
+      }
+    }, (e) {
+      context.read<TabRequestData>().state = ViewState.FAILURE;
+    },
     headers: await generateHeader(context));
   }
 }
