@@ -8,7 +8,7 @@ var _logger = Logger(
     printer: PrettyPrinter()
 );
 
-Future getRequest(String url,RequestSuccess requestSuccess,RequestFailure requestFailure, {Map<String,String> headers,Map<String,String> bodyParams}) async{
+Future getRequest(String url,RequestSuccess requestSuccess,RequestFailure requestFailure, {Map<String,String>? headers,Map<String,String>? bodyParams}) async{
   try{
     String mUrl = url+'?';
     if(bodyParams != null){
@@ -32,6 +32,6 @@ Future getRequest(String url,RequestSuccess requestSuccess,RequestFailure reques
   }
 }
 
-void postRequest(String url,{Map<String,String> headers,Map<String,String> bodyParams}) async{
+void postRequest(String url,{Map<String,String>? headers,Map<String,String>? bodyParams}) async{
   var response = await post(Uri.parse(url),headers:headers,body: bodyParams);
 }

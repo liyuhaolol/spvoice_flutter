@@ -16,7 +16,7 @@ class TabSuccessView extends StatefulWidget {
 }
 
 class _TabSuccessViewState extends State<TabSuccessView> with SingleTickerProviderStateMixin{
-  TabController _tabController;
+  late TabController _tabController;
   @override
   void initState() {
     super.initState();

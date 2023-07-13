@@ -9,14 +9,12 @@ import 'package:spvoice_flutter/view/commonheadbar.dart';
 
 class PageSetting extends StatefulWidget {
   final arguments;
-  String _title;
+  String _title = '';
   bool status = false;
 
   PageSetting({this.arguments}){
     if(arguments != null){
       _title = arguments['title'];
-    }else {
-      _title = '';
     }
   }
   @override

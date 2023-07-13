@@ -8,7 +8,7 @@ enum NewsState{
 class NewsDetailState extends ChangeNotifier{
   NewsState _state = NewsState.LOADING;
 
-  get state => _state;
+  NewsState get state => _state;
 
   set state(NewsState state){
     _state = state;

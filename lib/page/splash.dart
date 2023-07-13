@@ -38,7 +38,7 @@ class Skip extends StatefulWidget {
 }
 
 class _SkipState extends State<Skip> {
-  Timer _timer;
+  late Timer _timer;
   int _countdownTime = 3;
 
 

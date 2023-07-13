@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 class NtpToken{
   static const _channelName = "ntpToken";
   static const _methodName = "getNtpToken";
-  static MethodChannel _channel;
+  static MethodChannel _channel = MethodChannel(_channelName);
 
     static getNtpToken(String json,String rsa) async {
     var _logger = Logger(

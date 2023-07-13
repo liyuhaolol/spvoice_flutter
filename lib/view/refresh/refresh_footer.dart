@@ -9,7 +9,7 @@ const double _footerHeight = 60;///图文稿件item高度
 
 Widget NormalFooter(){
   return CustomFooter(
-    builder: (BuildContext context,LoadStatus mode){
+    builder: (BuildContext context,LoadStatus? mode){
       Widget body ;
       if(mode==LoadStatus.idle || mode == LoadStatus.canLoading){
         body =  Text(footer_complete,

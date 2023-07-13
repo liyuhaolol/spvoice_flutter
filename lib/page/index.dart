@@ -43,6 +43,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     switch(context.watch<TabRequestData>().state){
       case ViewState.INIT:
+      case ViewState.LOADING:
         return TabLoadingView();
       case ViewState.SUCCESS:
         return TabSuccessView(Provider.of<TabRequestData>(context, listen: false).channelList);

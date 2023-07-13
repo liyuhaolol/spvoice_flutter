@@ -1,9 +1,9 @@
 class Channel {
-  int _allowTopNumber;
-  int _channelId;
-  String _channelName;
-  bool _containSubcolumn;
-  int _openTopLevel;
+  int _allowTopNumber = 0;
+  int _channelId = 0;
+  String _channelName = '';
+  bool _containSubcolumn = true;
+  int _openTopLevel = 0;
 
   int get allowTopNumber => _allowTopNumber;
   int get channelId => _channelId;
@@ -12,16 +12,16 @@ class Channel {
   int get openTopLevel => _openTopLevel;
 
   Channel({
-    int allowTopNumber,
-    int channelId,
-    String channelName,
-    bool containSubcolumn,
-    int openTopLevel}){
-    _allowTopNumber = allowTopNumber;
-    _channelId = channelId;
-    _channelName = channelName;
-    _containSubcolumn = containSubcolumn;
-    _openTopLevel = openTopLevel;
+    int? allowTopNumber,
+    int? channelId,
+    String? channelName,
+    bool? containSubcolumn,
+    int? openTopLevel}){
+    _allowTopNumber = allowTopNumber!;
+    _channelId = channelId!;
+    _channelName = channelName!;
+    _containSubcolumn = containSubcolumn!;
+    _openTopLevel = openTopLevel!;
   }
 
   Channel.fromJson(dynamic json) {
