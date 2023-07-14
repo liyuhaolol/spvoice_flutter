@@ -16,7 +16,7 @@ import '../utils/token.dart';
 class RequestCenter {
 
   ///得到栏目列表
-  static void getTab(BuildContext context){
+  static void getTabLocal(BuildContext context){
     getRequest(
         HttpConstants.GET_TAB,
             (_,body){
@@ -117,7 +117,7 @@ class RequestCenter {
   }
   
   ///测试正式服接口
-  static void getTab2(BuildContext context) async{
+  static void getTabOnline(BuildContext context) async{
     getRequest(
         HttpConstants.GET_NEWS_CHANNEL, (_,body){
       Map result = json.decode(body);
