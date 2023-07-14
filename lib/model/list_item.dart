@@ -21,6 +21,8 @@ class ListItem {
       json["bannerList"].forEach((v) {
         _bannerList.add(News.fromJson(v));
       });
+    }else{
+      _bannerList = [];
     }
     _articleList = ArticleList.fromJson(json["articleList"]);
   }
