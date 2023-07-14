@@ -39,7 +39,7 @@ class NewsDetail extends StatelessWidget {
   }
 }
 class _getContent extends StatelessWidget {
-  News news;
+  final News news;
 
   _getContent(this.news);
 
@@ -47,7 +47,7 @@ class _getContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        initWebview(news.contentStaticPage!),
+        initWebview(news.contentStaticPage),
         _getDefaultView(context),
       ],
     );
@@ -78,7 +78,22 @@ class InjectWebview extends StatefulWidget {
 }
 
 class _InjectWebviewState extends State<InjectWebview> {
-
+/*  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setNavigationDelegate(
+        NavigationDelegate(
+            onProgress: (int progress){
+              if(progress > 70){
+                //context.read<NewsDetailState>().state = NewsState.FINISH;
+              }
+            },
+            onPageFinished: (String url) {
+              context.read<NewsDetailState>().state = NewsState.FINISH;
+            }
+        )
+    )
+    ..loadRequest(Uri.parse("${widget.url}?platform=Android&closeDL=true"));*/
+  late WebViewController controller;
   @override
   initState(){
     super.initState();
@@ -92,24 +107,23 @@ class _InjectWebviewState extends State<InjectWebview> {
                 context.read<WebviewInitState>().state = WebState.COMPLATE;
           }
       );
-      //startCountdownTimer();//启动计时器
     });
+    controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+          NavigationDelegate(
+              onProgress: (int progress){
+                if(progress > 70){
+                  context.read<NewsDetailState>().state = NewsState.FINISH;
+                }
+              },
+          )
+      )
+      ..loadRequest(Uri.parse("${widget.url}?platform=Android&closeDL=true"));
   }
 
   @override
   Widget build(BuildContext context) {
-    WebViewController controller = WebViewController()
-    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onProgress: (int progress){
-            if(progress > 70){
-              context.read<NewsDetailState>().state = NewsState.FINISH;
-            }
-          }
-        )
-      )
-    ..loadRequest(Uri.parse("${widget.url}?platform=Android&closeDL=true"));
     if(context.watch<WebviewInitState>().state == WebState.INIT){
       return Container();
     }else{
