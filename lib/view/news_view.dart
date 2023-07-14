@@ -366,7 +366,7 @@ Widget _getImage(String url){
     fit: BoxFit.cover,
     width: double.infinity,
     height: double.infinity,
-    alignment: Alignment.lerp(Alignment.topLeft, Alignment.topRight, 0.5),
+    alignment: Alignment.lerp(Alignment.topLeft, Alignment.topRight, 0.5)!,
     fadeInDuration: Duration(milliseconds: 0),
     fadeOutDuration: Duration(milliseconds: 0),
   );

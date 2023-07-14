@@ -10,7 +10,7 @@ enum ViewState{
 class RequestViewState extends ChangeNotifier{
   ViewState _state = ViewState.INIT;
 
-  get state => _state;
+  ViewState get state => _state;
 
   set state(ViewState state){
     _state = state;

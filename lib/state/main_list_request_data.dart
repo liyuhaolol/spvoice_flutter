@@ -4,8 +4,8 @@ import 'package:spvoice_flutter/state/request_view_state.dart';
 class MainListRequestData extends RequestViewState{
   List<News> bannerList = [];
   List<News> list = [];
-  int pageNum;
-  int pages;
-  int total;
+  int pageNum = 0;
+  int pages = 0;
+  int total = 0;
 
 }

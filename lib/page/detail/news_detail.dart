@@ -47,7 +47,7 @@ class _getContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        initWebview(news.contentStaticPage),
+        initWebview(news.contentStaticPage!),
         _getDefaultView(context),
       ],
     );
@@ -98,20 +98,24 @@ class _InjectWebviewState extends State<InjectWebview> {
 
   @override
   Widget build(BuildContext context) {
+    WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress){
+            if(progress > 70){
+              context.read<NewsDetailState>().state = NewsState.FINISH;
+            }
+          }
+        )
+      )
+    ..loadRequest(Uri.parse("${widget.url}?platform=Android&closeDL=true"));
     if(context.watch<WebviewInitState>().state == WebState.INIT){
       return Container();
     }else{
       return ScrollConfiguration(
         behavior: OverScrollBehavior(),
-        child: WebView(
-          initialUrl: "${widget.url}?platform=Android&closeDL=true",
-          javascriptMode: JavascriptMode.unrestricted,
-          onProgress: (progress){
-            if(progress > 70){
-              context.read<NewsDetailState>().state = NewsState.FINISH;
-            }
-          },
-        ),
+        child: WebViewWidget(controller: controller),
       );
     }
   }

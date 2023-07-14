@@ -24,8 +24,8 @@ class MyRouters{
   };
 
   static RouteFactory onGenerateRoute = (RouteSettings settings){
-    final String name = settings.name;
-    final Function contentBuilder = routes[name];
+    final String? name = settings.name;
+    final Function? contentBuilder = routes[name];
     if(contentBuilder != null){
       //启动图是要使用渐变动画
       switch(name){

@@ -3,13 +3,11 @@ import 'package:spvoice_flutter/res/colorlist.dart';
 
 class CommonHead extends StatelessWidget {
   String _title;
-  Color _lineColor;
+  Color _lineColor = Colors.white;
 
   CommonHead(this._title,{bool hasLine = true}){
     if(hasLine){
       _lineColor = gray_ed;
-    }else{
-      _lineColor = Colors.white;
     }
   }
 
