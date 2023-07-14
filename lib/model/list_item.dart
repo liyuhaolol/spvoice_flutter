@@ -160,16 +160,16 @@ class News {
 }
 
   News.fromJson(dynamic json) {
-    _contentAuthor = json["contentAuthor"];
-    _contentId = json["contentId"];
+    _contentAuthor = json["contentAuthor"]??'';
+    _contentId = json["contentId"]??0;
     _contentListImg = json["contentListImg"] != null ? json["contentListImg"].cast<String>() : [];
-    _contentReleaseTime = json["contentReleaseTime"];
-    _contentSource = json["contentSource"];
-    _contentStaticPage = json["contentStaticPage"];
-    _contentTitle = json["contentTitle"];
-    _contentTypeId = json["contentTypeId"];
-    _imageCount = json["imageCount"];
-    _isTop = json["isTop"];
+    _contentReleaseTime = json["contentReleaseTime"]??0;
+    _contentSource = json["contentSource"]??'';
+    _contentStaticPage = json["contentStaticPage"]??'';
+    _contentTitle = json["contentTitle"]??'';
+    _contentTypeId = json["contentTypeId"]??0;
+    _imageCount = json["imageCount"]??0;
+    _isTop = json["isTop"]??false;
     _mediaUrl = json["mediaUrl"]??'';
   }
 

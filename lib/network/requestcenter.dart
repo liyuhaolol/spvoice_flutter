@@ -16,9 +16,10 @@ import '../utils/token.dart';
 class RequestCenter {
 
   ///得到栏目列表
-  static void getTabLocal(BuildContext context){
+  static void getTab(BuildContext context) async{
+    String url = HttpConstants.useInternetFakeData?HttpConstants.GET_TAB:HttpConstants.GET_NEWS_CHANNEL;
     getRequest(
-        HttpConstants.GET_TAB,
+        url,
             (_,body){
           Map result = json.decode(body);
           switch(result['code']){
@@ -39,11 +40,12 @@ class RequestCenter {
     } ,
             (e){
           context.read<TabRequestData>().state = ViewState.FAILURE;
-    });
+    },
+        headers: await generateHeader(context));
   }
 
   ///得到新闻列表
-  static Future<int> getMainList(BuildContext context,int channelId,int pullType) async{
+  static Future<int> getMainList(BuildContext context,int pageNum,int channelId,int pullType) async{
     int pullCode = 0;
     await getRequest(HttpConstants.getPullUrl(pullType), (_,body){
       Map result = json.decode(body);
@@ -99,7 +101,9 @@ class RequestCenter {
     },
         headers:await generateHeader(context),
         bodyParams: {
-      'channelId':'$channelId'
+          'channelId':'$channelId',
+          'pageSize':'8',
+          'pageNum':'$pageNum'
     });
     return pullCode;
   }
@@ -114,31 +118,5 @@ class RequestCenter {
     );
     headers['appToken'] = token;
     return headers;
-  }
-  
-  ///测试正式服接口
-  static void getTabOnline(BuildContext context) async{
-    getRequest(
-        HttpConstants.GET_NEWS_CHANNEL, (_,body){
-      Map result = json.decode(body);
-      switch(result['code']){
-        case HttpCode.SUCCESS:
-          List<Channel> mList = [];
-          if(result['info'] != null){
-            result['info'].forEach((v){
-              mList.add(Channel.fromJson(v));
-            });
-          }
-          context.read<TabRequestData>().channelList = mList;
-          context.read<TabRequestData>().state = ViewState.SUCCESS;
-          break;
-        default:
-          context.read<TabRequestData>().state = ViewState.FAILURE;
-          break;
-      }
-    }, (e) {
-      context.read<TabRequestData>().state = ViewState.FAILURE;
-    },
-    headers: await generateHeader(context));
   }
 }

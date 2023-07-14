@@ -50,7 +50,7 @@ class _SyncPageState extends State<SyncPage> {
   @override
   void initState() {
     super.initState();
-    RequestCenter.getMainList(context, widget.id, HttpConstants.PULL_DOWN);
+    RequestCenter.getMainList(context, 1,widget.id, HttpConstants.PULL_DOWN);
   }
 
   @override
@@ -127,13 +127,14 @@ class _MainListPageState extends State<MainListPage> {
   }
 
   void _onRefresh() async{
-    await RequestCenter.getMainList(context, widget.id, HttpConstants.PULL_DOWN);
+    await RequestCenter.getMainList(context, 1,widget.id, HttpConstants.PULL_DOWN);
     _refreshController.refreshCompleted();
     _refreshController.loadComplete();
   }
 
   void _onLoading() async{
-    int code = await RequestCenter.getMainList(context, widget.id, HttpConstants.PULL_UP);
+    int pageNum = Provider.of<MainListRequestData>(context, listen: false).pageNum +1;
+    int code = await RequestCenter.getMainList(context, pageNum,widget.id, HttpConstants.PULL_UP);
     switch(code){
       case HttpCode.SUCCESS:
         if(Provider.of<MainListRequestData>(context, listen: false).pageNum >= Provider.of<MainListRequestData>(context, listen: false).pages){

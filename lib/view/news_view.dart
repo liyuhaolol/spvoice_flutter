@@ -124,7 +124,7 @@ Widget TextListItem(BuildContext context,News news){
 Widget OnePicListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
   if(news.contentSource != null && news.contentSource.isNotEmpty){
-    bottomLine.add(_getSmallText(news.contentSource));
+    bottomLine.add(_getSmallTextEllipsis(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
   bottomLine.add(_getSmallText(TimeUtils.getShowTime(news.contentReleaseTime)));
@@ -343,6 +343,19 @@ Widget _getSmallText(String content){
     style: TextStyle(
         fontSize: 12,
         color: gray_b3
+    ),
+  );
+}
+
+Widget _getSmallTextEllipsis(String content){
+  return Container(
+    constraints: BoxConstraints(maxWidth: 100),
+    child: Text(content,
+      style: TextStyle(
+          fontSize: 12,
+          color: gray_b3,
+          overflow: TextOverflow.ellipsis
+      ),
     ),
   );
 }
