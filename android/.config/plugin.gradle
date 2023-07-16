@@ -1,14 +1,14 @@
 ext {
     androids = [
-            compileSdkVersion             : 33,
-            targetSdkVersion              : 33,
+            compileSdkVersion             : 34,
+            targetSdkVersion              : 34,
     ]
 
     libs = [
-            appcompact              : '1.3.1',
-            design                  : '1.4.0',
+            appcompact              : '1.6.1',
+            design                  : '1.9.0',
             constraint              : '2.0.4',
-            fastjson                : '1.1.72.android',
+            fastjson                : '2.0.34.1.android4',
             recyclerviewadapter     : '3.0.6',
             eventbus                : '3.2.0',
             umeng_common            : '9.1.6',
@@ -27,7 +27,7 @@ ext {
             //自我维护的框架
             ft_httpcenter           : '1.1.0',
             ft_webview              : '1.0.7',
-            lib_utils               : '1.3.9',
+            lib_utils               : '1.4.6',
             lib_lifecycle           : '1.0.1',
             lib_image               : '1.1.5',
             timer                   : '1.0.1',

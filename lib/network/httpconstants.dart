@@ -1,6 +1,6 @@
 class HttpConstants{
 
-  static const bool useInternetFakeData = false;//传true会去加载项目里的静态假数据
+  static const bool useInternetFakeData = true;//传true会去加载项目里的静态假数据
 
 
   ///github静态数据

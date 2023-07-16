@@ -63,7 +63,7 @@ dependencies {
     //通用的工具类
     implementation "com.github.liyuhaolol:CommonUtils:${libs.lib_utils}"
     //token
-    implementation files('libs/TokenUtil.jar')
+    implementation files('libs/TokenUtil2.jar')
     //fastjson
-    implementation "com.alibaba:fastjson:${libs.fastjson}"
+    implementation "com.alibaba.fastjson2:fastjson2:${libs.fastjson}"
 }

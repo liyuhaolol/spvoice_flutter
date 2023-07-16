@@ -98,9 +98,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-#build:
-#  flavors:
-#    main:
-      # 默认编码设置为UTF-8
-#      options:
-#        --dart-define=FLUTTER_BUILD_DEFAULT_LANGUAGE_VERSION=utf-8
