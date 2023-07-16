@@ -51,9 +51,6 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-    }
 }
 
 flutter {
