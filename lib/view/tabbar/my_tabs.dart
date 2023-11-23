@@ -587,6 +587,8 @@ class _IndicatorPainter extends CustomPainter {
         tabLeft = _currentTabOffsets![tabIndex];
         tabRight = _currentTabOffsets![tabIndex + 1];
         break;
+      case null:
+        break;
     }
 
     if (indicatorSize == MyTabBarIndicatorSize.label) {
@@ -854,6 +856,8 @@ class _TabLabelBarRenderer extends RenderFlex {
         break;
       case TextDirection.ltr:
         xOffsets.add(size.width);
+        break;
+      case null:
         break;
     }
     onPerformLayout(xOffsets, textDirection!, size.width);

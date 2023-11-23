@@ -2,20 +2,13 @@ package com.github.spvoice_flutter;
 
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.github.spvoice_flutter.splashanimate.NoAlphaDrawableSplashScreen;
 import com.github.spvoice_flutter.utils.NtpToken;
 
 import io.flutter.embedding.android.FlutterActivity;
-import io.flutter.embedding.android.FlutterView;
-import io.flutter.embedding.android.SplashScreen;
-import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.embedding.engine.dart.DartExecutor;
 import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 
 
@@ -41,16 +34,6 @@ public class MainActivity extends FlutterActivity {
         fv.attachToFlutterEngine(flutterEngine);*/
     }
 
-    @Nullable
-    @Override
-    public SplashScreen provideSplashScreen() {
-        Drawable manifestSplashDrawable = getSplashScreenFromManifest();
-        if (manifestSplashDrawable != null) {
-            return new NoAlphaDrawableSplashScreen(manifestSplashDrawable);
-        } else {
-            return null;
-        }
-    }
 
     /*@Override
     protected void onResume() {
