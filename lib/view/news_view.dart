@@ -7,7 +7,7 @@ import 'package:spvoice_flutter/res/stringlist.dart';
 import 'package:spvoice_flutter/routers/routers.dart';
 import 'package:spvoice_flutter/utils/time_utils.dart';
 
-const double _itemHeight = 85;///图文稿件item高度
+const double _itemHeight = 95;///图文稿件item高度
 
 ///轮播图
 Widget SwiperView(BuildContext context,List<News> bannerList){
