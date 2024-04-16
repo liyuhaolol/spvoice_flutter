@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:spvoice_flutter/page/index/setting.dart';
 import 'package:spvoice_flutter/res/colorlist.dart';
 import 'package:spvoice_flutter/res/stringlist.dart';
 import 'package:spvoice_flutter/routers/routers.dart';
-import 'package:spvoice_flutter/utils/toastutils.dart';
 
 class MainBottom extends StatelessWidget {
   List indexData=[

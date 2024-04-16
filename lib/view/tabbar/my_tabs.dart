@@ -26,7 +26,7 @@ class MyTab extends StatelessWidget {
     this.child,
     this.tabHeight = _kTabHeight,
   }) : assert(text != null || child != null || icon != null),
-        assert(text == null || child == null),
+        assert(child == null),
         super(key: key);
 
   final String text;
@@ -112,10 +112,8 @@ class MyTabBar extends StatefulWidget implements PreferredSizeWidget {
     this.enableFeedback = false,
     this.onTap,
     this.physics,
-  }) : assert(tabs != null),
-        assert(isScrollable != null),
-        assert(dragStartBehavior != null),
-        assert(indicator != null || (indicatorWeight != null && indicatorWeight > 0.0)),
+  }) : assert(dragStartBehavior != null),
+        assert(indicator != null || (indicatorWeight > 0.0)),
         assert(indicator != null || (indicatorPadding != null)),
         super(key: key);
 
@@ -201,7 +199,7 @@ class _TabBarState extends State<MyTabBar> {
 
     Color color = widget.indicatorColor ?? Theme.of(context).indicatorColor;
 
-    if (widget.automaticIndicatorColorAdjustment && color.value == Material.of(context)?.color?.value)
+    if (widget.automaticIndicatorColorAdjustment && color.value == Material.of(context).color?.value)
       color = Colors.white;
     return MyUnderlineTabIndicator(
       borderSide: BorderSide(
@@ -218,15 +216,6 @@ class _TabBarState extends State<MyTabBar> {
   void _updateTabController() {
     final TabController newController = widget.controller ?? DefaultTabController.of(context);
     assert(() {
-      if (newController == null) {
-        throw FlutterError(
-            'No TabController for ${widget.runtimeType}.\n'
-                'When creating a ${widget.runtimeType}, you must either provide an explicit '
-                'TabController using the "controller" property, or you must ensure that there '
-                'is a DefaultTabController above the ${widget.runtimeType}.\n'
-                'In this case, there was neither an explicit controller nor a default controller.'
-        );
-      }
       return true;
     }());
 
@@ -524,9 +513,7 @@ class _IndicatorPainter extends CustomPainter {
     required this.tabKeys,
     required _IndicatorPainter? old,
     required this.indicatorPadding,
-  }) : assert(controller != null),
-        assert(indicator != null),
-        super(repaint: controller.animation) {
+  }) : super(repaint: controller.animation) {
     if (old != null)
       saveTabOffsets(old._currentTabOffsets!, old._currentTextDirection!);
   }
@@ -672,12 +659,12 @@ class _TabStyle extends AnimatedWidget {
     // the same value of inherit. Force that to be inherit=true here.
     final TextStyle? defaultStyle = (labelStyle
         ?? tabBarTheme.labelStyle
-        ?? themeData.primaryTextTheme.bodyText1
+        ?? themeData.primaryTextTheme.bodyLarge
     )?.copyWith(inherit: true);
     final TextStyle? defaultUnselectedStyle = (unselectedLabelStyle
         ?? tabBarTheme.unselectedLabelStyle
         ?? labelStyle
-        ?? themeData.primaryTextTheme.bodyText1
+        ?? themeData.primaryTextTheme.bodyLarge
     )?.copyWith(inherit: true);
     final TextStyle? textStyle = selected
         ? TextStyle.lerp(defaultStyle, defaultUnselectedStyle, animation.value)
@@ -685,7 +672,7 @@ class _TabStyle extends AnimatedWidget {
 
     final Color? selectedColor = labelColor
         ?? tabBarTheme.labelColor
-        ?? themeData.primaryTextTheme.bodyText1?.color;
+        ?? themeData.primaryTextTheme.bodyLarge?.color;
     final Color? unselectedColor = unselectedLabelColor
         ?? tabBarTheme.unselectedLabelColor
         ?? selectedColor?.withAlpha(0xB2); // 70% alpha
@@ -820,9 +807,7 @@ class _TabLabelBarRenderer extends RenderFlex {
     required TextDirection textDirection,
     required VerticalDirection verticalDirection,
     required this.onPerformLayout,
-  }) : assert(onPerformLayout != null),
-        assert(textDirection != null),
-        super(
+  }) : super(
         children: children,
         direction: direction,
         mainAxisSize: mainAxisSize,
@@ -908,7 +893,6 @@ class _TabBarScrollPosition extends ScrollPositionWithSingleContext {
       // scenario, setting the actual dimension would cause a strange scroll
       // effect without this guard because the super call below would starts a
       // ballistic scroll activity.
-      assert(viewportDimension != null);
       _initialViewportDimensionWasZero = viewportDimension != 0.0;
       correctPixels(tabBar._initialScrollOffset(viewportDimension, minScrollExtent, maxScrollExtent));
       result = false;

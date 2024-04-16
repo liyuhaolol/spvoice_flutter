@@ -71,10 +71,8 @@ class RequestCenter {
             List<News> mList = [];
             mList.add(News(contentTypeId: News.EMPTY));
             context.read<MainListRequestData>().list = mList;
-            if(context.read<MainListRequestData>().bannerList != null){
-              context.read<MainListRequestData>().bannerList.clear();
-            }
-            context.read<MainListRequestData>().pageNum = 0;
+            context.read<MainListRequestData>().bannerList.clear();
+                      context.read<MainListRequestData>().pageNum = 0;
             context.read<MainListRequestData>().pages = 0;
             context.read<MainListRequestData>().total = 0;
           }
@@ -87,10 +85,8 @@ class RequestCenter {
             List<News> mList = [];
             mList.add(News(contentTypeId: News.EMPTY));
             context.read<MainListRequestData>().list = mList;
-            if(context.read<MainListRequestData>().bannerList != null){
-              context.read<MainListRequestData>().bannerList.clear();
-            }
-          }
+            context.read<MainListRequestData>().bannerList.clear();
+                    }
           context.read<MainListRequestData>().state = ViewState.FAILURE;
           pullCode = HttpCode.SERVER_ERROR;
           break;

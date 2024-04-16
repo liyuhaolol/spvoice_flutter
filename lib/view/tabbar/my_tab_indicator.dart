@@ -11,8 +11,7 @@ class MyUnderlineTabIndicator extends Decoration {
     this.insets = EdgeInsets.zero,
     this.indicatorSize = MyTabBarIndicatorSize.tab,
     this.indicatorWidth = 50,
-  }) : assert(borderSide != null),
-        assert(insets != null);
+  });
 
   /// The color and weight of the horizontal line drawn below the selected tab.
   final BorderSide borderSide;
@@ -57,8 +56,6 @@ class MyUnderlineTabIndicator extends Decoration {
   }
 
   Rect _indicatorRectFixed(Rect rect, TextDirection textDirection) {
-    assert(rect != null);
-    assert(textDirection != null);
     final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
     //取中间坐标
     double cw = (indicator.left + indicator.right) / 2;
@@ -67,8 +64,6 @@ class MyUnderlineTabIndicator extends Decoration {
   }
 
   Rect _indicatorRectFor(Rect rect, TextDirection textDirection) {
-    assert(rect != null);
-    assert(textDirection != null);
     final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
     return Rect.fromLTWH(
       indicator.left,
@@ -86,8 +81,7 @@ class MyUnderlineTabIndicator extends Decoration {
 
 class _UnderlinePainter extends BoxPainter {
   _UnderlinePainter(this.decoration, this.indicatorSize, VoidCallback onChanged,)
-      : assert(decoration != null),
-        super(onChanged);
+      : super(onChanged);
 
   final MyUnderlineTabIndicator decoration;
 
@@ -95,7 +89,6 @@ class _UnderlinePainter extends BoxPainter {
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    assert(configuration != null);
     assert(configuration.size != null);
     final Rect rect = offset & configuration.size!;
     final TextDirection textDirection = configuration.textDirection!;

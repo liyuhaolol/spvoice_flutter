@@ -29,10 +29,8 @@ class ListItem {
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
-    if (_bannerList != null) {
-      map["bannerList"] = _bannerList.map((v) => v.toJson()).toList();
-    }
-    map["articleList"] = _articleList;
+    map["bannerList"] = _bannerList.map((v) => v.toJson()).toList();
+      map["articleList"] = _articleList;
     return map;
   }
 
@@ -78,10 +76,8 @@ class ArticleList {
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
-    if (_list != null) {
-      map["list"] = _list.map((v) => v.toJson()).toList();
-    }
-    map["pageNum"] = _pageNum;
+    map["list"] = _list.map((v) => v.toJson()).toList();
+      map["pageNum"] = _pageNum;
     map["pages"] = _pages;
     map["total"] = _total;
     return map;

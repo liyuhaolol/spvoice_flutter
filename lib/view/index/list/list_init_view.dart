@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spvoice_flutter/network/requestcenter.dart';
 
 class ListInitView extends StatefulWidget {
   @override

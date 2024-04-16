@@ -88,7 +88,7 @@ Widget EmptyListItem(BuildContext context,double viewPortHeight){
 ///纯文稿件
 Widget TextListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
-  if(news.contentSource != null && news.contentSource.isNotEmpty){
+  if(news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
@@ -123,7 +123,7 @@ Widget TextListItem(BuildContext context,News news){
 ///图文稿件
 Widget OnePicListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
-  if(news.contentSource != null && news.contentSource.isNotEmpty){
+  if(news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallTextEllipsis(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
@@ -179,7 +179,7 @@ Widget ThreePicListItem(BuildContext context,News news){
   double screenWidth = MediaQuery.of(context).size.width;
   double img_2x = (screenWidth - 33) / 3 * 2;///2倍图片大小
   List<Widget> bottomLine = [];
-  if(news.contentSource != null && news.contentSource.isNotEmpty){
+  if(news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
@@ -247,7 +247,7 @@ Widget ThreePicListItem(BuildContext context,News news){
 ///图集稿件
 Widget BigPicListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
-  if(news.contentSource != null && news.contentSource.isNotEmpty){
+  if(news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
@@ -290,7 +290,7 @@ Widget BigPicListItem(BuildContext context,News news){
 ///视频稿件
 Widget VideoListItem(BuildContext context,News news){
   List<Widget> bottomLine = [];
-  if(news.contentSource != null && news.contentSource.isNotEmpty){
+  if(news.contentSource.isNotEmpty){
     bottomLine.add(_getSmallText(news.contentSource));
     bottomLine.add(SizedBox(width: 10,));
   }
@@ -410,7 +410,7 @@ Widget _divider(){
 
 String _getImageUrl(News news){
   String imgUrl = '';
-  if(news.contentListImg != null && news.contentListImg.length > 0){
+  if(news.contentListImg.length > 0){
     imgUrl = news.contentListImg[0];
   }
   return imgUrl;

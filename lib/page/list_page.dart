@@ -96,7 +96,7 @@ class _MainListPageState extends State<MainListPage> {
 
   List<Widget> _buildList(BuildContext context,double viewPortHeight){
     List<Widget> mList = [];
-    if(Provider.of<MainListRequestData>(context, listen: false).bannerList != null && Provider.of<MainListRequestData>(context, listen: false).bannerList.length > 0){
+    if(Provider.of<MainListRequestData>(context, listen: false).bannerList.length > 0){
       ///存在轮播图
       mList.add(SwiperView(context,Provider.of<MainListRequestData>(context, listen: false).bannerList));
     }
