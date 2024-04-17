@@ -66,7 +66,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${libs.appcompact}"
     implementation "com.google.android.material:material:${libs.design}"
     //通用的工具类
-    implementation "com.github.liyuhaolol:CommonUtils:${libs.lib_utils}"
+    implementation "io.github.liyuhaolol:CommonUtils:${libs.lib_utils}"
     //token
     implementation files('libs/TokenUtil2.jar')
     //fastjson
